@@ -7,5 +7,8 @@ package TestPackage;
 
 public class experimentMethods
 {
-
+	public static void main (String[] args)
+	{
+		
+	}
 }
