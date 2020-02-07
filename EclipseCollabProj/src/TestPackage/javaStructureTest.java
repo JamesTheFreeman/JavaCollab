@@ -12,12 +12,12 @@ public class javaStructureTest
 		W = 0;
 		roomType = 0;
 	}
-	public javaStructureTest(int n, int e, int s, int w, int rm)
+	public javaStructureTest(int n, int e, int s, int w, int r)
 	{
 		N = n;
 		E = e;
 		S = s;
 		W = w;
-		roomType = rm;
+		roomType = r;
 	}
 }
