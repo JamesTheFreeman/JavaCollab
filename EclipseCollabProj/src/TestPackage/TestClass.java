@@ -5,8 +5,6 @@
 
 package TestPackage;
 
-// HI JACK :)
-
 public class TestClass
 {
 	public static void main (String[] args)
