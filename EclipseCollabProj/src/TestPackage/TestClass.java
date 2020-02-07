@@ -1,5 +1,5 @@
 /**
- * @author - YaBoi
+ * @author - Jack
  * This is just a test class w/in a test package. We can create new ones later!
  */
 
