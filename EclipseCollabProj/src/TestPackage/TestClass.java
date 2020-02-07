@@ -10,7 +10,6 @@ public class TestClass
 	public static void main (String[] args)
 	{
 		// Was just using variations of this to ensure pushing works
-		System.out.println("I love Cake!!!!!!!!!!!!");
-		// Spoiler: It does!
+		System.out.println("Testing");
 	}
 }
