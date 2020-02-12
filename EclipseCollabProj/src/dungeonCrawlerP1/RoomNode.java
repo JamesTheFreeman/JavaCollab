@@ -29,6 +29,10 @@ public class RoomNode
 		RoomType = rt;
 		enemies = enms;
 		importantThing = imprt;
+		N = 0;
+		E = 0;
+		S = 0;
+		W = 0;
 	}
 	
 	// METHODS
@@ -40,25 +44,76 @@ public class RoomNode
 	 */
 	public String checkType()
 	{
-		Scanner inStream = null;
+		Scanner reader = null;
+		// Try/catch to handle possible error
 		try
 		{
-			inStream = new Scanner(new File("roomtypes.txt"));
+			reader = new Scanner(new File("roomtypes.txt"));
 		}
 		catch(FileNotFoundException e)
 		{
 			System.out.println("Err: roomtypes.txt not found");
 			System.exit(1);
 		}
-		// Checks number at beginning of line, then chooses whether to take next line
 		int chk = RoomType;
 		String desc = "Err: no description found";
+		// Checks number at beginning of line, then chooses whether to take next line
 		do
 		{
-			chk = inStream.nextInt();
-			desc = inStream.nextLine();
+			chk = reader.nextInt();
+			desc = reader.nextLine();
 		} while (chk != RoomType);
 		
+		reader.close();
 		return desc;
+	}
+	/**
+	 * Uses the importantThing variable assigned to it to pull the correct description from a
+	 * text document (doesn't print on its own)
+	 * @return String containing appropriate description
+	 */
+	public String checkImport()
+	{
+		Scanner reader = null;
+		// Try/catch to handle possible error
+		try
+		{
+			reader = new Scanner(new File("importantthings.txt"));
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("Err: importantthings.txt not found");
+			System.exit(1);
+		}
+		int chk = importantThing;
+		String isItImportant = "Nothing of importance here";
+		// Checks number at beginning of line, then chooses whether to take next line
+		do
+		{
+			chk = reader.nextInt();
+			isItImportant = reader.nextLine();
+		} while (chk != importantThing);
+		
+		reader.close();
+		return isItImportant;
+	}
+	/**
+	 * Just checks to see where available paths are located and prints the information to
+	 * the screen, also doing a check if the player was just in one of the rooms for a touch
+	 * of added detail
+	 */
+	public void availablePaths()
+	{
+		System.out.println("Looking around yourself, you see door(s)...");
+		
+		// cameFrom is variable in Player, which as of writing this doesn't exist
+		
+		/*
+		if (N != Player.cameFrom && N != 0) System.out.println("to the North");
+		if (E != Player.cameFrom && E != 0) System.out.println("to the East");
+		if (S != Player.cameFrom && S != 0) System.out.println("to the South");
+		if (W != Player.cameFrom && W != 0) System.out.println("to the West");
+		if (Player.cameFrom != 0) System.out.println("... and back the way you came, of course");
+		*/
 	}
 }

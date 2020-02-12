@@ -1,0 +1,6 @@
+1 Important thing one
+2 Important thing two
+3 Come to think of it
+4 It would probably make more sense
+5 To have an important thing be an object
+6 Otherwise how will the player interact with it?
