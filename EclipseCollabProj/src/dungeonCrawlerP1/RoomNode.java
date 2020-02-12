@@ -1,5 +1,5 @@
 /**
- * @author - James Kent
+ * @author - Jack
  * Used to represent the different rooms/nodes comprising the map
  */
 
