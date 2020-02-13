@@ -62,7 +62,7 @@ public class RoomNode
 		{
 			chk = reader.nextInt();
 			desc = reader.nextLine();
-		} while (chk != RoomType);
+		} while (chk != RoomType || chk != 0);
 		
 		reader.close();
 		return desc;
@@ -92,7 +92,7 @@ public class RoomNode
 		{
 			chk = reader.nextInt();
 			isItImportant = reader.nextLine();
-		} while (chk != importantThing);
+		} while (chk != importantThing || chk != 0);
 		
 		reader.close();
 		return isItImportant;

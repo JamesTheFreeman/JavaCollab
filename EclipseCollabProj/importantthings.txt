@@ -4,3 +4,4 @@
 4 It would probably make more sense
 5 To have an important thing be an object
 6 Otherwise how will the player interact with it?
+0
