@@ -11,7 +11,7 @@ public class RoomNode
 {
 	int ID;
 	int RoomType;
-	boolean enemies;
+	boolean clear;
 	int importantThing;
 	int N, E, S, W;
 	
@@ -20,14 +20,14 @@ public class RoomNode
 	 * to room 1 (if applicable) will need to be manually set after the constructor is run
 	 * @param id		ID assigned in map generation
 	 * @param rt		RoomType assigned in map generation
-	 * @param enms		boolean value for enemies assigned in map generation
+	 * @param clear		determines whether the room has been previously cleared
 	 * @param imprt		importantThings value/id assigned in map generation
 	 */
-	public RoomNode(int id, int rt, boolean enms, int imprt)
+	public RoomNode(int id, int rt, int imprt)
 	{
 		ID = id;
 		RoomType = rt;
-		enemies = enms;
+		clear = false;
 		importantThing = imprt;
 		N = 0;
 		E = 0;
