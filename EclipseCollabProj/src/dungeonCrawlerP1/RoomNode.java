@@ -102,18 +102,18 @@ public class RoomNode
 	 * the screen, also doing a check if the player was just in one of the rooms for a touch
 	 * of added detail
 	 */
-	public void availablePaths()
+	public void availablePaths(Player plyr)
 	{
 		System.out.println("Looking around yourself, you see door(s)...");
 		
 		// cameFrom is variable in Player, which as of writing this doesn't exist
 		
 		/*
-		if (N != Player.cameFrom && N != 0) System.out.println("to the North");
-		if (E != Player.cameFrom && E != 0) System.out.println("to the East");
-		if (S != Player.cameFrom && S != 0) System.out.println("to the South");
-		if (W != Player.cameFrom && W != 0) System.out.println("to the West");
-		if (Player.cameFrom != 0) System.out.println("... and back the way you came, of course");
+		if (N != plyr.cameFrom && N != 0) System.out.println("to the North");
+		if (E != plyr.cameFrom && E != 0) System.out.println("to the East");
+		if (S != plyr.cameFrom && S != 0) System.out.println("to the South");
+		if (W != plyr.cameFrom && W != 0) System.out.println("to the West");
+		if (plyr.cameFrom != 0) System.out.println("... and back the way you came, of course");
 		*/
 	}
 }
