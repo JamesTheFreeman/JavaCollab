@@ -118,7 +118,7 @@ public class Player
 		newInv.print(append);
 		newInv.close();
 		// Message printed upon success
-		System.out.println("Item added to inventory");
+		System.out.println(addMe + " added to inventory");
 	}
 	/**
 	 * Similar to addToInventory in that it reads the entire inventory, except this method
