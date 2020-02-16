@@ -18,6 +18,10 @@ public class MainForGame
 		
 		Player player = createUser();
 		
+		// Gives initial description, no check on RNG at beginning
+		/*
+		roomArr[1].checkType();
+		*/
 	}
 	
 	public static Player createUser()
