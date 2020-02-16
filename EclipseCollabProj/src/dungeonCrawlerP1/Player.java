@@ -176,9 +176,8 @@ public class Player
 		local = roomNum;
 		// For the future, putting here so we don't forget
 		/*
-		checkRNG(roomNum);
-		describeRoom(roomNum);
-		checkImportant(roomNum);
+		roomArr[roomNum].checkRNG();
+		roomArr[roomNum].checkType();
 		*/
 	}
 	/**
@@ -207,17 +206,7 @@ public class Player
 	 */
 	public void useItem(String used)
 	{
-		boolean compat = false;
-		// Possible future implementation of usable items, 'use' is method in Interactable
-		// To be used like: Interactable.useItem(used);
-		// Returns boolean based on whether item was actually used
-		/*
-		compat = use(used);
-		*/
-		
-		// Only removes item if it was used
-		if (compat)
-			removeFromInv(used);
+		// Replace with method in Interactable class
 	}
 	/**
 	 * Relies on object of class NPChar, maybe not necessary but it can't hurt
