@@ -16,7 +16,13 @@ public class MainForGame
 		generateMap(mapSize);
 		*/
 		
+		// Tracing for debugging
+		System.out.println("Map created!\n");
+		
 		Player player = createUser();
+		
+		// Tracing for debugging
+		System.out.println("Welcome, " + player.Name);
 		
 		// Gives initial description, no check on RNG at beginning
 		/*
@@ -32,7 +38,7 @@ public class MainForGame
 		kbd.close();
 		// Calls apropriate constructor based on user input
 		Player player = null;
-		if (!name.equals(""))
+		if (!name.trim().isEmpty())
 			return player = new Player(name);
 		else
 			return player = new Player();
@@ -41,10 +47,10 @@ public class MainForGame
 	public static int pickSize()
 	{
 		System.out.println("Select your map size:");
-		System.out.println("> Small\n> Medium\n> Large");
+		System.out.println("> Small\n> Medium\n> Large\n");
 		Scanner kbd = new Scanner(System.in);
 		String size = kbd.nextLine();
-		size.toLowerCase();
+		size = size.toLowerCase();
 		if (size.equals("small") || size.equals("medium") || size.equals("large"))
 		{
 			switch(size)
