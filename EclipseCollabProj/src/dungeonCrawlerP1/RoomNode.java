@@ -63,8 +63,10 @@ public class RoomNode
 			chk = reader.nextInt();
 			desc = reader.nextLine();
 		} while (chk != RoomType || chk != 0);
-		
 		reader.close();
+		
+		if (importantThing != 0)
+			desc += checkImport();
 		return desc;
 	}
 	/**
