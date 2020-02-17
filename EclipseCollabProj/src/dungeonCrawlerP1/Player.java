@@ -1,6 +1,6 @@
 /**
  * @author - Jack
- * Stores information pertaining to player character and provides necessary methods
+ * Stores information pertaining to player-character and provides necessary methods
  */
 
 package dungeonCrawlerP1;

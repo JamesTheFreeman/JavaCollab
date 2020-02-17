@@ -51,6 +51,7 @@ public class MainForGame
 		Scanner kbd = new Scanner(System.in);
 		String size = kbd.nextLine();
 		size = size.toLowerCase();
+		kbd.close();
 		if (size.equals("small") || size.equals("medium") || size.equals("large"))
 		{
 			switch(size)
