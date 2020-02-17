@@ -51,12 +51,13 @@ public class Player
 	{
 		String printMe = "";
 		int i = 0;
-		while (inventory[i] != null && i < invSize)
+		while (inventory[i] != null || i < invSize)
 		{
-			printMe += "\n> " + inventory[i];
+			if (inventory[i] != null)
+				printMe += "\n> " + inventory[i];
 			i++;
 		}
-		if (inventory[0] == null)
+		if (printMe.equals(""))
 			printMe = "\nYour inventory is empty!";
 		System.out.print("Your items:\n============");
 		System.out.println(printMe + "\n");
