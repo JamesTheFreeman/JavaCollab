@@ -11,10 +11,8 @@ public class MainForGame
 	public static void main(String[] args)
 	{
 		int mapSize = pickSize();
-		// Generates the map, imagine that
-		/*
-		generateMap(mapSize);
-		*/
+		Game game = new Game(mapSize);
+		game.generateMap();
 		
 		// Tracing for debugging
 		System.out.println("Map created!\n");

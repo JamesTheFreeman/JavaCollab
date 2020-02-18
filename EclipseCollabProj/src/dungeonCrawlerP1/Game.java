@@ -28,7 +28,7 @@ public class Game {
      */
     public Game(int size) {
         numOfRooms = size;
-        roomArr = new RoomNode[size];
+        roomArr = new RoomNode[size + 1];
         from = 0;
         ran = new Random();
     }
@@ -45,7 +45,6 @@ public class Game {
 
     /**
      * Generate Map based on size
-     * @param size
      */
     public void generateMap() {
         int dir = 0;
