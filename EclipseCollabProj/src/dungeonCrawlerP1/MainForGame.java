@@ -43,6 +43,7 @@ public class MainForGame
 			if (!input.equals("exit"))
 				instance.takeCommand(input, game, player);
 		}
+		System.exit(0);
 	}
 	/**
 	 * Creates a new Player object w/ input name
