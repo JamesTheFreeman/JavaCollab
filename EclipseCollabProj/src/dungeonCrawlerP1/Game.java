@@ -55,11 +55,24 @@ public class Game {
             roomArr[i] = new RoomNode(i,ran.nextInt(20) + 1,ran.nextInt(20) + 1);
             while (!roomPlaced(roomArr[i])) {
                 dir = ran.nextInt(4) + 1;
-                if (roomDirAvl(roomArr[i],dir)) {
+                if (roomDirAvl(roomArr[plc],dir)) {
                     setRoomDir(roomArr[plc],dir,i);
                     setRoomDir(roomArr[i],opp(dir),i);
                 } else {
-                    plc++;
+                    switch (dir) {
+                        case 1:
+                            plc = roomArr[plc].N;
+                            break;
+                        case 2:
+                            plc = roomArr[plc].E;
+                            break;
+                        case 3:
+                            plc = roomArr[plc].S;
+                            break;
+                        case 4:
+                            plc = roomArr[plc].W;
+                            break;
+                    {
                 }
             }
         }
@@ -89,16 +102,16 @@ public class Game {
         switch (dir) {
             case 1:
                 if (x.N == 0) res = true;
-            break;
+                break;
             case 2:
                 if (x.E == 0) res = true;
-            break;
+                break;
             case 3:
                 if (x.S == 0) res = true;
-            break;
+                break;
             case 4:
                 if (x.W == 0) res = true;
-            break;
+                break;
         }
     }
 
@@ -112,16 +125,16 @@ public class Game {
         switch (dir) {
             case 1:
                 x.N = y;
-            break;
+                break;
             case 2:
                 x.E = y;
-            break;
+                break;
             case 3:
                 x.S = y;
-            break;
+                break;
             case 4:
                 x.W = y;
-            break;
+                break;
          }
      }
 
@@ -134,6 +147,6 @@ public class Game {
         if (dir == 1) return 3;
         if (dir == 2) return 4;
         if (dir == 3) return 1;
-        if (dir == 4) return 2;
+        return 2;
      }
  }
