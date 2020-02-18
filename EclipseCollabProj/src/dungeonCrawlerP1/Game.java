@@ -162,4 +162,12 @@ public class Game {
                 return -1;
         }
      }
+
+     private String testRoomList() {
+        String retur = "Error";
+        for (int i = 0; i <= roomArr.length; i++) {
+            retur += "ID: " + roomArr[i].ID + " N: " + roomArr[i].N + " E: " + roomArr[i].E + " S: " + roomArr[i].S + " W: " + roomArr[i].W + "\n";
+        }
+        return retur;
+     }
  }
