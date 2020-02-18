@@ -102,6 +102,21 @@ public class Player
 		}
 	}
 	/**
+	 * Searches for a specific item in player's inventory, returns true if it can be
+	 * located, false otherwise
+	 * @param item		Item being searched for
+	 * @return true/false based on whether the item exists
+	 */
+	public boolean checkFor(String item)
+	{
+		for (int i = 0; i < invSize; i++)
+		{
+			if (inventory[i].equals(item))
+				return true;
+		}
+		return false;
+	}
+	/**
 	 * Method for moving the player from one room to another
 	 * @param roomNum		ID of room being traveled to
 	 */
