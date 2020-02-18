@@ -52,7 +52,7 @@ public class Game {
         int preDir = 0;
         for (int i = 1; i <= numOfRooms; i++) {
             plc = 1;
-            roomArr[i] = new RoomNode(i,ran.nextInt(20) + 1,ran.nextInt(20) + 1);
+            roomArr[i] = new RoomNode(i, ran.nextInt(20) + 1, ran.nextInt(20) + 1);
             while (!roomPlaced(roomArr[i])) {
                 do {
                     dir = ran.nextInt(4) + 1;
@@ -129,15 +129,19 @@ public class Game {
         switch (dir) {
             case 1:
                 x.N = y;
+                roomArr[y].S = x.ID;
                 break;
             case 2:
                 x.E = y;
+                roomArr[y].W = x.ID;
                 break;
             case 3:
                 x.S = y;
+                roomArr[y].N = x.ID;
                 break;
             case 4:
                 x.W = y;
+                roomArr[y].W = x.ID;
                 break;
          }
      }
