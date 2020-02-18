@@ -2,11 +2,12 @@
  * @author - Stephen
  * Takes user input and determines command being input
  */
+
 package dungeonCrawlerP1;
 
 public class CurrentAction {
 	
-	public static void takeCommand(String input) {
+	public static void takeCommand(String input, Game game, Player player) {
 		
 		/**
 		 * Array index 0 = Command Word
@@ -18,61 +19,49 @@ public class CurrentAction {
 			case "n":
 			case "north":
 				//Traverse North
-				/**
-				 	if (roomArr[local].North != 0) {
-						player.traverseRoom(roomArr[local].North);
+				 	if (game.roomArr[player.local].N != 0) {
+						player.traverseRoom(game.roomArr[player.local].N, game);
 					} else {System.out.println("You cannot go that way");}
-				 */
 				break;
 			case "s":
 			case "south":
 				//Traverse South
-				/**
-			 		if (roomArr[local].South != 0) {
-						player.traverseRoom(roomArr[local].South);
+			 		if (game.roomArr[player.local].S != 0) {
+						player.traverseRoom(game.roomArr[player.local].S, game);
 					} else {System.out.println("You cannot go that way");}
-				 */
 				break;
 			case "e":
 			case "east":
 				//Traverse East
-				/**
-		 			if (roomArr[local].East != 0) {
-						player.traverseRoom(roomArr[local].East);
+					if (game.roomArr[player.local].E != 0) {
+						player.traverseRoom(game.roomArr[player.local].E, game);
 					} else {System.out.println("You cannot go that way");}
-				 */
 				break;
 			case "w":
 			case "west":
 				//Traverse West
-				/**
-		 			if (roomArr[local].West != 0) {
-						player.traverseRoom(roomArr[local].West);
+					if (game.roomArr[player.local].W != 0) {
+						player.traverseRoom(game.roomArr[player.local].W, game);
 					} else {System.out.println("You cannot go that way");}
-				 */
-				break;
+			break;
 			case "inventory":
 				//Check Inventory
-				/**
-				 * player.checkInv();
-				 */
+				player.checkInv();
 				break;
 			case "room":
 				//Describe room
-				/**
-				 * String desc = "";
-				 * desc = roomArr[local].checkType();
-				 * System.out.println(desc)
-				 */
+				String desc = "";
+				desc = game.roomArr[player.local].checkType();
+				System.out.println(desc);
 				break;
 			case "take":
 				//add item to inventory
-				/**
-				   if (roomArr[local].contains(inputs[1])) {
-					roomArr[local].removeItem(inputs[1]);
+				/*
+				if (game.roomArr[player.local].contains(inputs[1])) {
+					game.roomArr[player.local].removeItem(inputs[1]);
 					player.addToInventory(inputs[1]);
 					} else {System.out.println("Item not found");}
-				 */
+				*/
 				break;
 			case "use":
 				//use an item from inventory

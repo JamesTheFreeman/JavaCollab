@@ -4,4 +4,18 @@
 4 It would probably make more sense
 5 To have an important thing be an object
 6 Otherwise how will the player interact with it?
+7 aaa
+8 aaa
+9 aaa
+10 aaa
+11 aaa
+12 aaa
+13 aaa
+14 aaa
+15 aaa
+16 aaa
+17 aaa
+18 aaa
+19 aaa
+20 aaa
 0

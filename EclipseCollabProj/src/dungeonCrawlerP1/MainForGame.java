@@ -25,12 +25,12 @@ public class MainForGame
 		Player player = createUser();
 		
 		// Tracing for debugging
-		System.out.println("Welcome, " + player.Name);
+		System.out.println("Welcome, " + player.Name + "\n");
 		
+		// System.out.println(game.roomArr[1].RoomType); For bugifixing
 		// Gives initial description, no check on RNG at beginning
-		/*
-		roomArr[1].checkType();
-		*/
+		String startDesc = game.roomArr[1].checkType();
+		System.out.println(startDesc.trim() + "\n");
 	}
 	
 	public static Player createUser()

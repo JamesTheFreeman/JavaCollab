@@ -61,8 +61,9 @@ public class RoomNode
 		do
 		{
 			chk = reader.nextInt();
+			// System.out.println(chk); For bugfixing
 			desc = reader.nextLine();
-		} while (chk != RoomType || chk != 0);
+		} while (chk != RoomType && chk != 0);
 		reader.close();
 		
 		if (importantThing != 0)
@@ -94,7 +95,7 @@ public class RoomNode
 		{
 			chk = reader.nextInt();
 			isItImportant = reader.nextLine();
-		} while (chk != importantThing || chk != 0);
+		} while (chk != importantThing && chk != 0);
 		
 		reader.close();
 		return isItImportant;

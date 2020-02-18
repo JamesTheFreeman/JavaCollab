@@ -120,13 +120,13 @@ public class Player
 	 * Method for moving the player from one room to another
 	 * @param roomNum		ID of room being traveled to
 	 */
-	public void traverseRoom(int roomNum)
+	public void traverseRoom(int roomNum, Game game)
 	{
 		cameFrom = local;
 		local = roomNum;
 		// For the future, putting here so we don't forget
+		game.roomArr[roomNum].checkType();
 		/*
-		roomArr[roomNum].checkType();
 		roomArr[roomNum].checkRNG();
 		*/
 	}
