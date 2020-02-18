@@ -3,8 +3,8 @@
  * Class description here
  */
 
-import java.util.Random;
 package dungeonCrawlerP1;
+import java.util.Random;
 
 public class Game {
     int numOfRooms;
@@ -75,7 +75,7 @@ public class Game {
                         case 4:
                             plc = roomArr[plc].W;
                             break;
-                    {
+                    }
                     preDir = dir;
                 }
             }
@@ -117,6 +117,7 @@ public class Game {
                 if (x.W == 0) res = true;
                 break;
         }
+        return res;
     }
 
     /**
