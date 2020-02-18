@@ -60,7 +60,7 @@ public class Game {
                 // Prevent program to go back to previous generatorRoom
                 do {
                     direction = random.nextInt(4) + 1;
-                } while (direction == pastDirection);
+                } while (direction == opp(pastDirection));
                 // Check if generatorRooms n-w is available
                 if (roomDirAvl(roomArr[generatorRoom],direction)) {
                     setRoomDir(roomArr[generatorRoom],direction,i);
