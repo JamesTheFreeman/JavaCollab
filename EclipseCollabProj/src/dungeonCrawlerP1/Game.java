@@ -27,7 +27,7 @@ public class Game {
      * @param size
      */
     public Game(int size) {
-        numOfRooms = 0;
+        numOfRooms = size;
         roomArr = new RoomNode[size];
         from = 0;
         ran = new Random();
@@ -37,9 +37,9 @@ public class Game {
      * Dev Constructor for testing
      */
     public Game(int numOfRooms, RoomNode[] roomArr, int from) {
-        numOfRooms = this.numOfRooms;
-        roomArr = this.roomArr;
-        from = this.from;
+        this.numOfRooms = numOfRooms;
+        this.roomArr = roomArr;
+        this.from = from;
         ran = new Random();
     }
 
@@ -47,11 +47,11 @@ public class Game {
      * Generate Map based on size
      * @param size
      */
-    public void generateMap(int size) {
+    public void generateMap() {
         int dir = 0;
         int plc = 0;
         int preDir = 0;
-        for (int i = 1; i <= size; i++) {
+        for (int i = 1; i <= numOfRooms; i++) {
             plc = 1;
             roomArr[i] = new RoomNode(i,ran.nextInt(20) + 1,ran.nextInt(20) + 1);
             while (!roomPlaced(roomArr[i])) {
