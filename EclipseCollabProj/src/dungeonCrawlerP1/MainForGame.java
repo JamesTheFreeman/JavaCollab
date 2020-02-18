@@ -8,14 +8,20 @@ import java.util.*;
 
 public class MainForGame
 {
+	// DO NOT USE .close(), as this also closes System.in, preventing
+	// further use of Scanners <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	static Scanner kbd = new Scanner(System.in);
+	
 	public static void main(String[] args)
 	{
+		
 		int mapSize = pickSize();
 		Game game = new Game(mapSize);
 		game.generateMap();
 		
 		// Tracing for debugging
 		System.out.println("Map created!\n");
+		
 		
 		Player player = createUser();
 		
@@ -31,9 +37,7 @@ public class MainForGame
 	public static Player createUser()
 	{
 		System.out.print("Enter your name: ");
-		Scanner kbd = new Scanner(System.in);
 		String name = kbd.nextLine();
-		kbd.close();
 		// Calls apropriate constructor based on user input
 		Player player = null;
 		if (!name.trim().isEmpty())
@@ -46,10 +50,8 @@ public class MainForGame
 	{
 		System.out.println("Select your map size:");
 		System.out.println("> Small\n> Medium\n> Large\n");
-		Scanner kbd = new Scanner(System.in);
 		String size = kbd.nextLine();
 		size = size.toLowerCase();
-		kbd.close();
 		if (size.equals("small") || size.equals("medium") || size.equals("large"))
 		{
 			switch(size)
