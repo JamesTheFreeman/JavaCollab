@@ -50,11 +50,14 @@ public class Game {
     public void generateMap(int size) {
         int dir = 0;
         int plc = 0;
+        int preDir = 0;
         for (int i = 1; i <= size; i++) {
             plc = 1;
             roomArr[i] = new RoomNode(i,ran.nextInt(20) + 1,ran.nextInt(20) + 1);
             while (!roomPlaced(roomArr[i])) {
-                dir = ran.nextInt(4) + 1;
+                do {
+                    dir = ran.nextInt(4) + 1;
+                } while (dir == preDir);
                 if (roomDirAvl(roomArr[plc],dir)) {
                     setRoomDir(roomArr[plc],dir,i);
                     setRoomDir(roomArr[i],opp(dir),i);
@@ -73,6 +76,7 @@ public class Game {
                             plc = roomArr[plc].W;
                             break;
                     {
+                    preDir = dir;
                 }
             }
         }
