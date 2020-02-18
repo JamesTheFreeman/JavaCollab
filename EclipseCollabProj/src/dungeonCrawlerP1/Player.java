@@ -1,19 +1,19 @@
 /**
  * @author - Jack
- * Stores information pertaining to player-character and provides necessary methods
+ * Stores information pertaining to player character and provides necessary methods
  */
 
 package dungeonCrawlerP1;
-import java.util.*;
-import java.io.*;
 
 public class Player
 {
 	String Name;
 	double HP;
-	double MaxHP;
+	double MaxHP; // Adjustable stat
 	int local;
 	int cameFrom;
+	String[] inventory;
+	int invSize = 30; // Can be changed as needed
 	
 	/**
 	 * Default constructor, in case the player doesn't want to provide a name
@@ -26,6 +26,7 @@ public class Player
 		MaxHP = 100;
 		local = 1;
 		cameFrom = 0;
+		inventory = new String[invSize];
 	}
 	/**
 	 * Constructor for typical use, takes player name and sets all other variables
@@ -38,175 +39,96 @@ public class Player
 		MaxHP = 100;
 		local = 1;
 		cameFrom = 0;
+		inventory = new String[invSize];
 	}
 	
 	// METHODS
 	
 	/**
-	 * If the player has items in playerinventory.txt, this method reads them off in
-	 * a list format (Requires that items in text document are all on separate lines)
+	 * Prints the contents of the inventory array
 	 */
 	public void checkInv()
 	{
-		Scanner invReader = null;
-		// Try/catch to handle possible error
-		try
+		String printMe = "";
+		int i = 0;
+		while (inventory[i] != null || i < invSize)
 		{
-			invReader = new Scanner(new File("playerinventory.txt"));
+			if (inventory[i] != null)
+				printMe += "\n> " + inventory[i];
+			i++;
 		}
-		catch(FileNotFoundException e)
-		{
-			System.out.println("Err: playerinventory.txt not found");
-			System.exit(1);
-		}
-		if (!invReader.hasNextLine())
-			System.out.println("No items in inventory!");
-		else
-		{
-			System.out.println("Your items:\n============");
-			// Reads inventory line by line, as long as there's lines to read
-			while (invReader.hasNextLine())
-			{
-				System.out.println("> " + invReader.nextLine());
-			}
-		}
-		invReader.close();
+		if (printMe.equals(""))
+			printMe = "\nYour inventory is empty!";
+		System.out.print("Your items:\n============");
+		System.out.println(printMe + "\n");
 	}
 	/**
-	 * Reads the players entire inventory, adds the new item, and reinserts it in the
-	 * text document
-	 * @param addMe		Name of item to be added to inventory
+	 * Searches for an empty spot in the player's inventory to store item
+	 * @param addMe		Item to be added to inventory
+	 * @param echo		Boolean that indicates whether to echo item added message
 	 */
-	public void addToInventory(String addMe)
+	public void addToInventory(String addMe, boolean echo)
 	{
-		Scanner invReader = null;
-		// Try/catch to handle possible error
-		try
+		int i = 0;
+		while (inventory[i] != null && i < invSize)
 		{
-			invReader = new Scanner(new File("playerinventory.txt"));
+			i++;
 		}
-		catch(FileNotFoundException e)
-		{
-			System.out.println("Err: playerinventory.txt not found");
-			System.exit(1);
-		}
-		String append = "";
-		// Adds item being added to current inventory, if needed
-		if (invReader.hasNextLine())
-		{
-			while (invReader.hasNextLine())
-			{
-				append += invReader.nextLine() + "\n";
-			}
-			append += addMe;
-			invReader.close();
-		}
+		if (i == invSize)
+			System.out.println("Inventory full!\n");
 		else
-			append = addMe;
-		// For printing to text file
-		PrintWriter newInv = null;
-		// Try/catch to handle possible error
-		try
 		{
-			newInv = new PrintWriter("playerinventory.txt");
+			inventory[i] = addMe;
+			if (echo)
+				System.out.println(addMe + " added to inventory\n");
 		}
-		catch (IOException e)
-		{
-			System.out.println("Err: can't open playerinventory.txt for writing");
-			System.exit(1);
-		}
-		newInv.print(append);
-		newInv.close();
-		// Message printed upon success
-		System.out.println(addMe + " added to inventory");
 	}
 	/**
-	 * Similar to addToInventory in that it reads the entire inventory, except this method
-	 * just omits the desired String when reassembling the contents of the inventory
-	 * (Player shouldn't have access to this command, should only be called by other methods)
-	 * @param removeMe		Name of item to be removed from inventory
+	 * Searches inventory array for item to be removed and sets that index to null
+	 * @param removeMe		Item to be removed
 	 */
 	public void removeFromInv(String removeMe)
 	{
-		Scanner invReader = null;
-		// Try/catch to handle possible error
-		try
+		int i = 0;
+		while (!inventory[i].equals(removeMe) && i < invSize)
 		{
-			invReader = new Scanner(new File("playerinventory.txt"));
+			i++;
 		}
-		catch(FileNotFoundException e)
-		{
-			System.out.println("Err: playerinventory.txt not found");
-			System.exit(1);
-		}
-		String append = "";
-		if (!invReader.hasNextLine())
-			System.out.println("Your inventory is empty!");
+		if (i == invSize)
+			System.out.println("Err: Could not find item to be removed");
 		else
 		{
-			while (invReader.hasNextLine())
-			{
-				String bffr = invReader.nextLine();
-				if (bffr != removeMe)
-					append = bffr + "\n";
-			}
-			invReader.close();
+			inventory[i] = null;
 		}
-		PrintWriter newInv = null;
-		// Try/catch to handle possible error
-		try
+	}
+	/**
+	 * Searches for a specific item in player's inventory, returns true if it can be
+	 * located, false otherwise
+	 * @param item		Item being searched for
+	 * @return true/false based on whether the item exists
+	 */
+	public boolean checkFor(String item)
+	{
+		for (int i = 0; i < invSize; i++)
 		{
-			newInv = new PrintWriter("playerinventory.txt");
+			if (inventory[i].equals(item))
+				return true;
 		}
-		catch (IOException e)
-		{
-			System.out.println("Err: can't open playerinventory.txt for writing");
-			System.exit(1);
-		}
-		newInv.print(append);
-		newInv.close();
+		return false;
 	}
 	/**
 	 * Method for moving the player from one room to another
 	 * @param roomNum		ID of room being traveled to
 	 */
-	public void traverseRoom(int roomNum)
+	public void traverseRoom(int roomNum, Game game)
 	{
 		cameFrom = local;
 		local = roomNum;
 		// For the future, putting here so we don't forget
+		System.out.println(game.roomArr[roomNum].checkType() + "\n");
 		/*
 		roomArr[roomNum].checkRNG();
-		roomArr[roomNum].checkType();
 		*/
-	}
-	/**
-	 * Method for clearing playerinventory.txt - assumes the file already exists
-	 * If the file doesn't exist, it's going to make a new one (probably fine)
-	 */
-	public void resetInv()
-	{
-		PrintWriter nukeInv = null;
-		// Try/catch to handle possible error
-		try
-		{
-			nukeInv = new PrintWriter("playerinventory.txt");
-		}
-		catch (IOException e)
-		{
-			System.out.println("Err: can't open playerinventory.txt for writing");
-			System.exit(1);
-		}
-		nukeInv.print("");
-		nukeInv.close();
-	}
-	/**
-	 * Method allowing for use of item(s) on interactable items
-	 * @param used
-	 */
-	public void useItem(String used)
-	{
-		// Replace with method in Interactable class
 	}
 	/**
 	 * Relies on object of class NPChar, maybe not necessary but it can't hurt
@@ -218,14 +140,5 @@ public class Player
 		/*
 		startConvo();
 		*/
-	}
-	/**
-	 * Just realized how strangely formatted this is, may need reworking for implementation
-	 * @param R		Name of the RoomNode being checked
-	 */
-	public void checkPaths(RoomNode R)
-	{
-		// Maybe don't need this method, could just potentially use availablePaths directly
-		R.availablePaths(this);
 	}
 }

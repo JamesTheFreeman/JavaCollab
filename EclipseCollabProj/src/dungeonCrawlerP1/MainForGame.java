@@ -8,50 +8,66 @@ import java.util.*;
 
 public class MainForGame
 {
+	// DO NOT USE .close(), as this also closes System.in, preventing
+	// further use of Scanners <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	static Scanner kbd = new Scanner(System.in);
+	
 	public static void main(String[] args)
 	{
-		int mapSize = pickSize();
-		// Generates the map, imagine that
-		/*
-		generateMap(mapSize);
-		*/
+		// Game initialization
 		
+		int mapSize = pickSize();
+		Game game = new Game(mapSize);
+		game.generateMap();
 		// Tracing for debugging
 		System.out.println("Map created!\n");
-		
 		Player player = createUser();
-		
 		// Tracing for debugging
-		System.out.println("Welcome, " + player.Name);
-		
+		System.out.println("Welcome, " + player.Name + "\n");
+		/*System.out.println("RoomType: " + game.roomArr[1].RoomType + "\n"); For bugifixing*/
 		// Gives initial description, no check on RNG at beginning
-		/*
-		roomArr[1].checkType();
-		*/
+		String startDesc = game.roomArr[1].checkType();
+		System.out.println(startDesc.trim() + "\n");
+		
+		// Gameplay start
+		
+		CurrentAction instance = new CurrentAction();
+		String input = "";
+		// (Temporary) loop to allow for multiple commands
+		while (!input.equals("exit"))
+		{
+			System.out.print("> ");
+			input = kbd.nextLine();
+			input.toLowerCase();
+			System.out.println("");
+			if (!input.equals("exit"))
+				instance.takeCommand(input, game, player);
+		}
 	}
-	
+	/**
+	 * Creates a new Player object w/ input name
+	 * @return Initialized Player object
+	 */
 	public static Player createUser()
 	{
 		System.out.print("Enter your name: ");
-		Scanner kbd = new Scanner(System.in);
 		String name = kbd.nextLine();
-		kbd.close();
 		// Calls apropriate constructor based on user input
-		Player player = null;
 		if (!name.trim().isEmpty())
-			return player = new Player(name);
+			return new Player(name);
 		else
-			return player = new Player();
+			return new Player();
 	}
-	
+	/**
+	 * Allows user to select the size to be used for generating the map
+	 * @return The desired size as an integer
+	 */
 	public static int pickSize()
 	{
 		System.out.println("Select your map size:");
 		System.out.println("> Small\n> Medium\n> Large\n");
-		Scanner kbd = new Scanner(System.in);
 		String size = kbd.nextLine();
 		size = size.toLowerCase();
-		kbd.close();
 		if (size.equals("small") || size.equals("medium") || size.equals("large"))
 		{
 			switch(size)

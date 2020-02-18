@@ -61,8 +61,9 @@ public class RoomNode
 		do
 		{
 			chk = reader.nextInt();
+			/*System.out.println(chk); For bugfixing*/
 			desc = reader.nextLine();
-		} while (chk != RoomType || chk != 0);
+		} while (chk != RoomType && chk != 0);
 		reader.close();
 		
 		if (importantThing != 0)
@@ -94,7 +95,7 @@ public class RoomNode
 		{
 			chk = reader.nextInt();
 			isItImportant = reader.nextLine();
-		} while (chk != importantThing || chk != 0);
+		} while (chk != importantThing && chk != 0);
 		
 		reader.close();
 		return isItImportant;
@@ -107,15 +108,17 @@ public class RoomNode
 	public void availablePaths(Player plyr)
 	{
 		System.out.println("Looking around yourself, you see door(s)...");
-		
-		// cameFrom is variable in Player, which as of writing this doesn't exist
-		
-		/*
-		if (N != plyr.cameFrom && N != 0) System.out.println("to the North");
-		if (E != plyr.cameFrom && E != 0) System.out.println("to the East");
-		if (S != plyr.cameFrom && S != 0) System.out.println("to the South");
-		if (W != plyr.cameFrom && W != 0) System.out.println("to the West");
-		if (plyr.cameFrom != 0) System.out.println("... and back the way you came, of course");
-		*/
+		boolean other = false;
+		if (N != plyr.cameFrom && N != 0) {System.out.println("to the North"); other = true;}
+		if (E != plyr.cameFrom && E != 0) {System.out.println("to the East"); other = true;}
+		if (S != plyr.cameFrom && S != 0) {System.out.println("to the South"); other = true;}
+		if (W != plyr.cameFrom && W != 0) {System.out.println("to the West"); other = true;}
+		if (plyr.cameFrom != 0)
+		{
+			if (other) System.out.print("... and ");
+			else System.out.print("... ");
+			System.out.println("back the way you came");
+		}
+		System.out.println();
 	}
 }

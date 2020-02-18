@@ -28,7 +28,7 @@ public class Game {
      */
     public Game(int size) {
         numOfRooms = size;
-        roomArr = new RoomNode[size];
+        roomArr = new RoomNode[size + 1];
         from = 0;
         random = new Random();
     }
@@ -45,7 +45,6 @@ public class Game {
 
     /**
      * Generate Map based on size
-     * @param size
      */
     public void generateMap() {
         int direction = 0;
@@ -163,7 +162,7 @@ public class Game {
         }
      }
 
-     private String testRoomList() {
+     public String testRoomList() {
         String retur = "Error";
         for (int i = 0; i <= roomArr.length; i++) {
             retur += "ID: " + roomArr[i].ID + " N: " + roomArr[i].N + " E: " + roomArr[i].E + " S: " + roomArr[i].S + " W: " + roomArr[i].W + "\n";
