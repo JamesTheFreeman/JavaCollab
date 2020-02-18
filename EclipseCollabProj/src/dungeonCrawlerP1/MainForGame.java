@@ -30,6 +30,19 @@ public class MainForGame
 		System.out.println(startDesc.trim() + "\n");
 		
 		// Gameplay start
+		
+		CurrentAction instance = new CurrentAction();
+		String input = "";
+		// (Temporary) loop to allow for multiple commands
+		while (!input.equals("exit"))
+		{
+			System.out.print("> ");
+			input = kbd.nextLine();
+			input.toLowerCase();
+			System.out.println("");
+			if (!input.equals("exit"))
+				instance.takeCommand(input, game, player);
+		}
 	}
 	/**
 	 * Creates a new Player object w/ input name

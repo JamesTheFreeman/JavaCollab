@@ -125,7 +125,7 @@ public class Player
 		cameFrom = local;
 		local = roomNum;
 		// For the future, putting here so we don't forget
-		game.roomArr[roomNum].checkType();
+		System.out.println(game.roomArr[roomNum].checkType() + "\n");
 		/*
 		roomArr[roomNum].checkRNG();
 		*/
