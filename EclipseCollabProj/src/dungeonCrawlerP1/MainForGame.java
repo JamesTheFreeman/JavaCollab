@@ -14,25 +14,27 @@ public class MainForGame
 	
 	public static void main(String[] args)
 	{
+		// Game initialization
 		
 		int mapSize = pickSize();
 		Game game = new Game(mapSize);
 		game.generateMap();
-		
 		// Tracing for debugging
 		System.out.println("Map created!\n");
-		
 		Player player = createUser();
-		
 		// Tracing for debugging
 		System.out.println("Welcome, " + player.Name + "\n");
-		
-		// System.out.println(game.roomArr[1].RoomType); For bugifixing
+		/*System.out.println("RoomType: " + game.roomArr[1].RoomType + "\n"); For bugifixing*/
 		// Gives initial description, no check on RNG at beginning
 		String startDesc = game.roomArr[1].checkType();
 		System.out.println(startDesc.trim() + "\n");
+		
+		// Gameplay start
 	}
-	
+	/**
+	 * Creates a new Player object w/ input name
+	 * @return Initialized Player object
+	 */
 	public static Player createUser()
 	{
 		System.out.print("Enter your name: ");
@@ -43,7 +45,10 @@ public class MainForGame
 		else
 			return new Player();
 	}
-	
+	/**
+	 * Allows user to select the size to be used for generating the map
+	 * @return The desired size as an integer
+	 */
 	public static int pickSize()
 	{
 		System.out.println("Select your map size:");
