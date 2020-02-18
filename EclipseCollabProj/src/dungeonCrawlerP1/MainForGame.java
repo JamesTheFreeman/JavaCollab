@@ -22,7 +22,6 @@ public class MainForGame
 		// Tracing for debugging
 		System.out.println("Map created!\n");
 		
-		
 		Player player = createUser();
 		
 		// Tracing for debugging
@@ -39,11 +38,10 @@ public class MainForGame
 		System.out.print("Enter your name: ");
 		String name = kbd.nextLine();
 		// Calls apropriate constructor based on user input
-		Player player = null;
 		if (!name.trim().isEmpty())
-			return player = new Player(name);
+			return new Player(name);
 		else
-			return player = new Player();
+			return new Player();
 	}
 	
 	public static int pickSize()
