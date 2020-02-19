@@ -116,7 +116,7 @@ public class RoomNode
 		if (plyr.cameFrom != 0)
 		{
 			if (other) System.out.print("... and ");
-			else System.out.print("... ");
+			else System.out.print("\n... ");
 			System.out.println("back the way you came");
 		}
 		System.out.println();
