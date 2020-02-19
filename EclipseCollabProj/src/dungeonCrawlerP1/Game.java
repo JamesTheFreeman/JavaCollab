@@ -58,7 +58,7 @@ public class Game {
     		roomArr[i] = new RoomNode(i, random.nextInt(20) + 1, random.nextInt(20) + 1);
     	}
 
-    	int pastDir = 0;	// To indicate previous direction traveled
+    	int pastDir;		// To indicate previous direction traveled
     	boolean placed;		// Indicator of whether room has been successfully placed
     	
     	// Moves through rooms that need placing, starting w/ 2 since we're working out from 1
@@ -66,11 +66,11 @@ public class Game {
     	for (int i = 2; i <= numOfRooms; i++)
     	{
     		origin = 1;		// Resets origin to room 1 after each placement
+    		pastDir = 0;	// Resets pastDir after origin reset
     		placed = false;
     		while (!placed)	// Ensures room placement
     		{
-				// Ensures generateMap doesn't move backwards
-				do
+				do // Ensures generateMap doesn't move backwards
 				{
 					// Random int 1-4 (or 0-3 + 1, technically)
 					direction = random.nextInt(4) + 1;

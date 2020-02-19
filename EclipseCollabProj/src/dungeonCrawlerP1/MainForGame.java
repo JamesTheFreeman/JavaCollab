@@ -28,13 +28,15 @@ public class MainForGame
 		// Gives initial description, no check on RNG at beginning
 		String startDesc = game.roomArr[1].checkType();
 		System.out.println(startDesc.trim() + "\n");
-		
+		/* Debugging tool
 		Game.debugConnections(game);
+		*/
 		
 		// Gameplay start
 		
 		CurrentAction instance = new CurrentAction();
 		String input = "";
+		
 		// (Temporary) loop to allow for multiple commands
 		while (!input.equals("exit"))
 		{

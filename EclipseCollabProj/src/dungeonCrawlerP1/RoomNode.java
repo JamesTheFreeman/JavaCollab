@@ -146,12 +146,16 @@ public class RoomNode
     	{
     		case 1:
     			N = room;
+    			break;
     		case 2:
     			E = room;
+    			break;
     		case 3:
     			S = room;
+    			break;
     		case 4:
     			W = room;
+    			break;
     	}
     }
 }
