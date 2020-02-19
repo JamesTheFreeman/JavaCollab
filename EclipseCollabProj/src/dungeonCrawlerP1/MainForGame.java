@@ -48,6 +48,9 @@ public class MainForGame
 		}
 		System.exit(0);
 	}
+	
+	// METHODS
+	
 	/**
 	 * Creates a new Player object w/ input name
 	 * @return Initialized Player object
