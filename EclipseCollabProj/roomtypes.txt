@@ -1,21 +1,21 @@
-1 This is the first room description
-2 This is the second room description
-3 This is the third room description
-4 Desc asdmiasdm
-5 Desc asdmiasdm
-6 Desc asdmiasdm
-7 Desc asdmiasdm
-8 Desc asdmiasdm
-9 Desc asdmiasdm
-10 Desc asdmiasdm
-11 Desc asdmiasdm
-12 Desc asdmiasdm
-13 Desc asdmiasdm
-14 Desc asdmiasdm
-15 Desc asdmiasdm
-16 Desc asdmiasdm
-17 Desc asdmiasdm
-18 Desc asdmiasdm
-19 Desc asdmiasdm
-20 Desc asdmiasdm
-0
+1 This is the first room description.
+2 This is the second room description.
+3 This is the third room description.
+4 Room desc four.
+5 Desc five.
+6 Description would go here.
+7 Description number seven.
+8 Placeholder description.
+9 Desc nine.
+10 Desc ten.
+11 Random description for testing.
+12 This is stupid, desc twelve.
+13 Desc thirteen, yeehaw.
+14 Description number fourteen.
+15 Placeholder words here.
+16 Descriptive description.
+17 The seven-layer OSI Model is getting on my nerves.
+18 What's the difference between TCP and UDP?
+19 My teacher says we have an exam.
+20 Description twenty.
+0 Err: No description.

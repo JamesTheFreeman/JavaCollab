@@ -36,7 +36,6 @@ public class MainForGame
 		
 		CurrentAction instance = new CurrentAction();
 		String input = "";
-		
 		// (Temporary) loop to allow for multiple commands
 		while (!input.equals("exit"))
 		{

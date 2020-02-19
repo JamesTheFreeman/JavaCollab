@@ -89,7 +89,7 @@ public class RoomNode
 			System.exit(1);
 		}
 		int chk = importantThing;
-		String isItImportant = "Nothing of importance here";
+		String isItImportant = "Nothing of importance here.";
 		// Checks number at beginning of line, then chooses whether to take next line
 		do
 		{
@@ -107,12 +107,12 @@ public class RoomNode
 	 */
 	public void availablePaths(Player plyr)
 	{
-		System.out.println("Looking around yourself, you see door(s)...");
+		System.out.print("Looking around yourself, you see door(s)...");
 		boolean other = false;
-		if (N != plyr.cameFrom && N != 0) {System.out.println("to the North"); other = true;}
-		if (E != plyr.cameFrom && E != 0) {System.out.println("to the East"); other = true;}
-		if (S != plyr.cameFrom && S != 0) {System.out.println("to the South"); other = true;}
-		if (W != plyr.cameFrom && W != 0) {System.out.println("to the West"); other = true;}
+		if (N != plyr.cameFrom && N != 0) {System.out.print("\nto the North"); other = true;}
+		if (E != plyr.cameFrom && E != 0) {System.out.print("\nto the East"); other = true;}
+		if (S != plyr.cameFrom && S != 0) {System.out.print("\nto the South"); other = true;}
+		if (W != plyr.cameFrom && W != 0) {System.out.print("\nto the West"); other = true;}
 		if (plyr.cameFrom != 0)
 		{
 			if (other) System.out.print("... and ");
