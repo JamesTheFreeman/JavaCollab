@@ -121,4 +121,35 @@ public class RoomNode
 		}
 		System.out.println();
 	}
+	
+	public boolean avail(int x)
+    {
+    	switch (x)
+    	{
+    		case 1:
+    			return N == 0;
+    		case 2:
+    			return E == 0;
+    		case 3:
+    			return S == 0;
+    		case 4:
+    			return W == 0;
+    	}
+    	return true;
+    }
+	
+	public void setDir(int x, int dir)
+    {
+    	switch (x)
+    	{
+    		case 1:
+    			N = dir;
+    		case 2:
+    			E = dir;
+    		case 3:
+    			S = dir;
+    		case 4:
+    			W = dir;
+    	}
+    }
 }

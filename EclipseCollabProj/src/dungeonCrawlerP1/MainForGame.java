@@ -29,6 +29,8 @@ public class MainForGame
 		String startDesc = game.roomArr[1].checkType();
 		System.out.println(startDesc.trim() + "\n");
 		
+		Game.debugConnections(game);
+		
 		// Gameplay start
 		
 		CurrentAction instance = new CurrentAction();
@@ -67,7 +69,9 @@ public class MainForGame
 	{
 		System.out.println("Select your map size:");
 		System.out.println("> Small\n> Medium\n> Large\n");
+		System.out.print("> ");
 		String size = kbd.nextLine();
+		System.out.println();
 		size = size.toLowerCase();
 		if (size.equals("small") || size.equals("medium") || size.equals("large"))
 		{
