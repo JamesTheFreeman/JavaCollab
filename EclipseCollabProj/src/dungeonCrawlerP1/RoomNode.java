@@ -122,6 +122,7 @@ public class RoomNode
 		System.out.println();
 	}
 	
+	// Indicates if node (N-W) is unoccupied or not
 	public boolean avail(int x)
     {
     	switch (x)
@@ -138,18 +139,19 @@ public class RoomNode
     	return true;
     }
 	
-	public void setDir(int x, int dir)
+	// Sets apropriate roomID for selected direction
+	public void setDir(int x, int room)
     {
     	switch (x)
     	{
     		case 1:
-    			N = dir;
+    			N = room;
     		case 2:
-    			E = dir;
+    			E = room;
     		case 3:
-    			S = dir;
+    			S = room;
     		case 4:
-    			W = dir;
+    			W = room;
     	}
     }
 }
