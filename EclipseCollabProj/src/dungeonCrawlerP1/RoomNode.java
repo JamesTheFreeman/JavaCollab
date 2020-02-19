@@ -119,6 +119,7 @@ public class RoomNode
 			else System.out.print("\n... ");
 			System.out.println("back the way you came");
 		}
+		else System.out.println();
 		System.out.println();
 	}
 	

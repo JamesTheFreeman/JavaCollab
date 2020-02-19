@@ -19,8 +19,9 @@ public class MainForGame
 		int mapSize = pickSize();
 		Game game = new Game(mapSize);
 		game.generateMap();
-		// Tracing for debugging
+		/* Tracing for debugging
 		System.out.println("Map created!\n");
+		*/
 		Player player = createUser();
 		// Tracing for debugging
 		System.out.println("Welcome, " + player.Name + "\n");
@@ -40,10 +41,11 @@ public class MainForGame
 		while (!input.equals("exit"))
 		{
 			System.out.print("> ");
-			input = kbd.nextLine();
-			input.toLowerCase();
+			input = kbd.nextLine();	// User input
+			input.toLowerCase();	// Set case for uniform input
 			System.out.println("");
 			if (!input.equals("exit"))
+				// Passes user input, as long as input != exit
 				instance.takeCommand(input, game, player);
 		}
 		System.exit(0);
