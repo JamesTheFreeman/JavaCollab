@@ -1,6 +1,6 @@
 /**
- * @author - Michael
- * Class description here
+ * @author - Michael & Jack
+ * Generates a map consisting of RoomNodes
  */
 
 package dungeonCrawlerP1;
