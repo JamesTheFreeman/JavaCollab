@@ -7,10 +7,10 @@ package dungeonCrawlerP1;
 import java.util.Random;
 
 public class Game {
-    int numOfRooms;
-    RoomNode[] roomArr;
-    int from;
-    private Random random;
+    int numOfRooms;			// Total number of rooms
+    RoomNode[] roomArr;		// Array containing RoomNodes (size numOfRooms + 1)
+    int from;				// Unused variable? Replaced with pastDir
+    private Random random;	// Random number
 
     /**
      * Default Constructor, creates medium room
@@ -48,28 +48,26 @@ public class Game {
      */
     public void generateMap()
     {
-    	int direction;
-    	int origin;
+    	int direction;	// Direction (1-4/N-W) for attempted room creation
+    	int origin;		// RoomNode current room is being generated from
     	
-    	// Makes array
+    	// Constructs each RoomNode in the array
     	for (int i = 1; i <= numOfRooms; i++)
     	{
+    		// Assigns room ID and gives random int 1-20 for room type & important
     		roomArr[i] = new RoomNode(i, random.nextInt(20) + 1, random.nextInt(20) + 1);
     	}
 
-    	// To indicate previous direction traveled
-    	int pastDir = 0;
-    	// Indicator of whether room has been successfully placed
-    	boolean placed;
+    	int pastDir = 0;	// To indicate previous direction traveled
+    	boolean placed;		// Indicator of whether room has been successfully placed
+    	
     	// Moves through rooms that need placing, starting w/ 2 since we're working out from 1
     	// Room 1 isn't placable as there's nothing to place it on as of yet
     	for (int i = 2; i <= numOfRooms; i++)
     	{
-    		// Resets origin to room 1 after each placement
-    		origin = 1;
+    		origin = 1;		// Resets origin to room 1 after each placement
     		placed = false;
-    		// Ensures room placement
-    		while (!placed)
+    		while (!placed)	// Ensures room placement
     		{
 				// Ensures generateMap doesn't move backwards
 				do
@@ -85,22 +83,21 @@ public class Game {
     				roomArr[origin].setDir(direction, i);
     				// Sets opposite value for connected
     				roomArr[i].setDir(opp(direction), origin);
+    				// Allows loop to be broken
     				placed = true;
     			}
 
-    			// Moves to new room to generate from
-    			else
+    			else // Moves to new room to generate from
     			{
     				// Moves origin of map generation to room occupying selected node
     				origin = newOrigin(direction, origin);
-    				// Error message for a bug I fixed :)
-    				if (origin == 0)
+    				
+    				if (origin == 0) // Error message for a bug I fixed
     				{
     					System.out.println("Err: cannot generate from room 0");
     					System.exit(1);
     				}
-    				// Tracks past direction if origin is moved
-    				pastDir = direction;
+    				pastDir = direction; // Tracks past direction if origin is moved
     			}
     		}
     	}
@@ -124,6 +121,7 @@ public class Game {
     		case 0:
     			return 0;
     	}
+    	// Shouldn't be possible, but Eclipse screams if this isn't here
     	return 0;
     }
 
@@ -141,6 +139,7 @@ public class Game {
     		case 4:
     			return roomArr[origin].W;
     	}
+    	// Shouldn't be possible, but Eclipse screams if this isn't here
     	return 0;
     }
     
@@ -152,6 +151,6 @@ public class Game {
     		System.out.println("ID: " + g.roomArr[i].ID + " | N: " + g.roomArr[i].N + " E: " + g.roomArr[i].E
     				+ " S: " + g.roomArr[i].S + " W: " + g.roomArr[i].W);
     	}
-    	System.out.println();
+    	System.out.println(); // For neatness
     }
  }
