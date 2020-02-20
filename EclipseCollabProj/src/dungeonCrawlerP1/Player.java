@@ -7,13 +7,13 @@ package dungeonCrawlerP1;
 
 public class Player
 {
-	String Name;
-	double HP;
-	double MaxHP; // Adjustable stat
-	int local;
-	int cameFrom;
-	String[] inventory;
-	int invSize = 30; // Can be changed as needed
+	String Name;		// Player name
+	double HP;			// Current HP
+	double MaxHP; 		// Adjustable max HP stat
+	int local;			// Tracks RoomNode currently in
+	int cameFrom;		// Tracks RoomNode last in
+	String[] inventory;	// Player inventory
+	int invSize = 30; 	// Can be changed as needed
 	
 	/**
 	 * Default constructor, in case the player doesn't want to provide a name
@@ -125,7 +125,7 @@ public class Player
 		cameFrom = local;
 		local = roomNum;
 		// For the future, putting here so we don't forget
-		System.out.println(game.roomArr[roomNum].checkType() + "\n");
+		System.out.println(game.roomArr[roomNum].checkType().trim() + "\n");
 		/*
 		roomArr[roomNum].checkRNG();
 		*/

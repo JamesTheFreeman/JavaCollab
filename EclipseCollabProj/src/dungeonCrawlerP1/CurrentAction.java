@@ -47,6 +47,12 @@ public class CurrentAction {
 						player.traverseRoom(game.roomArr[player.local].W, game);
 					} else {System.out.println("You cannot go that way\n");}
 					break;
+				case "back":
+					//Traverse Back
+					if (player.cameFrom > 0) {
+						player.traverseRoom(player.cameFrom, game);
+					} else {System.out.println("Nowhere to go back to\n");}
+					break;
 				default:
 					System.out.println("Unknown Command, typing 'help' to see list of available commands\n");
 					break;
@@ -64,7 +70,7 @@ public class CurrentAction {
 					//Describe room
 					String desc = "";
 					desc = game.roomArr[player.local].checkType();
-					System.out.println(desc + "\n");
+					System.out.println(desc.trim() + "\n");
 					break;
 				case "take":
 					//add item to inventory
