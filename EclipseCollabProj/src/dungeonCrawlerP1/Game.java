@@ -153,4 +153,13 @@ public class Game {
     	}
     	System.out.println(); // For neatness
     }
+    
+    // Prints rooms as map using X/Y coordinates
+    public static void printMap(Game g)
+    {
+    	for (int i = 1; i < g.numOfRooms; i++)
+    	{
+    		break;
+    	}
+    }
  }
