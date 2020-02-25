@@ -14,26 +14,27 @@ public class MainForGame
 	
 	public static void main(String[] args)
 	{
-		// Game initialization
+		/*
+		 * GAME INITIALIZATION
+		 * Initial map build + player creation
+		 */
 		
 		int mapSize = pickSize();
 		Game game = new Game(mapSize);
 		game.generateMap();
-		/* Tracing for debugging
-		System.out.println("Map created!\n");
-		*/
+		
 		Player player = createUser();
-		// Tracing for debugging
 		System.out.println("Welcome, " + player.Name + "\n");
-		/*System.out.println("RoomType: " + game.roomArr[1].RoomType + "\n"); For bugifixing*/
+		
 		// Gives initial description, no check on RNG at beginning
 		String startDesc = game.roomArr[1].checkType();
 		System.out.println(startDesc.trim() + "\n");
-		/* Debugging tool
-		Game.debugConnections(game);
-		*/
+		// Game.debugConnections(game); DEBUG TOOL
 		
-		// Gameplay start
+		/*
+		 * GAMEPLAY START
+		 * Player interaction starts here
+		 */
 		
 		CurrentAction instance = new CurrentAction();
 		String input = "";
