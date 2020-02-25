@@ -29,7 +29,10 @@ public class MainForGame
 		// Gives initial description, no check on RNG at beginning
 		String startDesc = game.roomArr[1].checkType();
 		System.out.println(startDesc.trim() + "\n");
-		// Game.debugConnections(game); DEBUG TOOL
+		// DEBUG TOOLS
+		// Game.debugConnections(game);
+		Game.printMap(game);
+		Game.printXY(game);
 		
 		/*
 		 * GAMEPLAY START

@@ -9,11 +9,12 @@ import java.io.*;
 
 public class RoomNode
 {
-	int ID;
-	int RoomType;
-	boolean clear;
-	int importantThing;
-	int N, E, S, W;
+	int ID;				// Room # corresponding to place in room array
+	int RoomType;		// Determines which description will be assigned to the room
+	boolean clear;		// Whether or not the room has been cleared/visited by the player
+	int importantThing;	// Determines description/type of important thing located in room
+	int N, E, S, W;		// Contain the room # of the room connected at this point of the current room
+	int x, y;			// The x & y coordinates of the given room
 	
 	/**
 	 * Constructor for generation of map: sets N-W as 0 so the room connecting a given room
@@ -123,7 +124,11 @@ public class RoomNode
 		System.out.println();
 	}
 	
-	// Indicates if node (N-W) is unoccupied or not
+	/**
+	 * Indicates if node (N-W) is unoccupied or not
+	 * @param x		Direction N-W in question
+	 * @return Whether that direction node equals 0
+	 */
 	public boolean avail(int x)
     {
     	switch (x)
@@ -140,7 +145,11 @@ public class RoomNode
     	return true;
     }
 	
-	// Sets apropriate roomID for selected direction
+	/**
+	 * Sets apropriate roomID for selected direction
+	 * @param x			Direction N-W in int form
+	 * @param room		Room being placed
+	 */
 	public void setDir(int x, int room)
     {
     	switch (x)
@@ -159,4 +168,61 @@ public class RoomNode
     			break;
     	}
     }
+	
+	public boolean occupied(int z, Game g)
+	{
+		int xv, yv;
+		switch(z)
+		{
+			case 1:
+				xv = x;
+				yv = y + 1;
+				break;
+			case 2:
+				xv = x + 1;
+				yv = y;
+				break;
+			case 3:
+				xv = x;
+				yv = y - 1;
+				break;
+			case 4:
+				xv = x - 1;
+				yv = y;
+				break;
+			default:
+				xv = 59;
+				yv = 59;
+				break;
+		}
+		String compare = xv + " " + yv;
+		for (int i = 1; i <= g.numOfRooms; i++)
+		{
+			if (g.xy[i] != null)
+			{
+				if (g.xy[i].equals(compare))
+					return true;
+			}
+		}
+		return false;
+	}
+	
+	public void setXY(int d, Game g)
+	{
+		switch(d)
+		{
+			case 1:
+				y = g.y + 1;
+				break;
+			case 2:
+				x = g.x + 1;
+				break;
+			case 3:
+				y = g.y - 1;
+				break;
+			case 4:
+				x = g.x - 1;
+				break;
+		}
+	}
 }
