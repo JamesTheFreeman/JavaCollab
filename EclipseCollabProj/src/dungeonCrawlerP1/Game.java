@@ -214,7 +214,7 @@ public class Game {
     			return roomArr[origin].W;
     	}
     	// Shouldn't be possible, but Eclipse screams if this isn't here
-    	return 0;
+    	return 99;
     }
     
     /**
