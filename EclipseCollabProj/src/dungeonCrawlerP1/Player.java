@@ -51,7 +51,7 @@ public class Player
 	{
 		String printMe = "";
 		int i = 0;
-		while (inventory[i] != null || i < invSize)
+		while (inventory[i] != null && i < invSize)
 		{
 			if (inventory[i] != null)
 				printMe += "\n> " + inventory[i];

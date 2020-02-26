@@ -98,6 +98,7 @@ public class CurrentAction {
 					System.out.println("Available Commands:\n"
 							+ "Help - List of Commands\n"
 							+ "Go - Travel North, East, South, West, or back (if applicable)\n"
+							+ "Map - Check your location on the map\n"
 							+ "Inventory - Check Inventory\n"
 							+ "Room - Description of current room\n"
 							+ "Check - Checks available paths\n"
