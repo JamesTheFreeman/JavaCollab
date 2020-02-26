@@ -54,7 +54,7 @@ public class MainForGame
 		System.out.println(startDesc.trim() + "\n");
 		// DEBUG TOOLS
 		// Game.debugConnections(game);
-		if (devMode) Game.printMap(game);
+		if (devMode) Game.printMap(game, player);
 		if (devMode) Game.printXY(game);
 		
 		/*

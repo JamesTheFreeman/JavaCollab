@@ -236,9 +236,14 @@ public class Game {
     /**
      * Prints rooms as map using X/Y coordinates, moving row by row
      * generating rooms from left to right
+     * [  ] - empty room/nothing notable mapped
+     * [! ] - objective/otherwise
+     * [? ] - quest/curiosity
+     * [ x] - x represents player
+     * Not everything in the key has been added, mostly there for reference
      * @param g		Game being mapped
      */
-    public static void printMap(Game g)
+    public static void printMap(Game g, Player p)
     {
     	int yMax = g.maxY();	// Max y value
     	int yMin = g.minY();	// Min y value
@@ -259,7 +264,8 @@ public class Game {
     				// Checks if room exists at current x, y values
     				if (g.roomArr[k].x == xval && g.roomArr[k].y == yval)
     				{
-    					map += "[  ]";
+    					if (k == p.local) map += "[ x]";
+    					else map += "[  ]";
     					placed = true;
     				}
     				k++;

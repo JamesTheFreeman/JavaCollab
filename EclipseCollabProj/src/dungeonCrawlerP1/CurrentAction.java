@@ -106,7 +106,7 @@ public class CurrentAction {
 					break;
 				case "map":
 					// Open map (might remove later?)
-					Game.printMap(game);
+					Game.printMap(game, player);
 					break;
 				default:
 					System.out.println("Unknown Command, typing 'help' to see list of available commands\n");
