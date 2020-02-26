@@ -28,6 +28,7 @@ public class MainForGame
 		startAns.toLowerCase();
 		System.out.println("\n");
 		if (startAns.equals("yes") || startAns.equals("y"));
+		// Dev mode to enable/disable tracing
 		else if (startAns.equals("dev")) devMode = true;
 		else
 		{
