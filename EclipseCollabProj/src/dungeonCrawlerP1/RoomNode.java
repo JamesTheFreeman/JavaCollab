@@ -202,7 +202,7 @@ public class RoomNode
 			{
 				if (g.xy[i].equals(compare))
 				{
-					System.out.println(xv + " " + yv + " occupied");
+					if (g.tracing) System.out.println(xv + " " + yv + " occupied");
 					return true;
 				}
 			}

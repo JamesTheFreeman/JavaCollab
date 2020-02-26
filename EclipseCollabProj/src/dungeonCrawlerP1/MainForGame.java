@@ -15,12 +15,34 @@ public class MainForGame
 	public static void main(String[] args)
 	{
 		/*
+		 * GAME START SCREEN
+		 * Mostly for dev mode for tracing
+		 */
+		
+		boolean devMode = false;
+		System.out.println("====================");
+		System.out.println("Welcome! Start game?");
+		System.out.println("====================\n");
+		System.out.print("> ");
+		String startAns = kbd.nextLine();
+		startAns.toLowerCase();
+		System.out.println("\n");
+		if (startAns.equals("yes") || startAns.equals("y"));
+		else if (startAns.equals("dev")) devMode = true;
+		else
+		{
+			System.out.println("Exiting...\n");
+			System.exit(0);
+		}
+		
+		/*
 		 * GAME INITIALIZATION
 		 * Initial map build + player creation
 		 */
 		
 		int mapSize = pickSize();
 		Game game = new Game(mapSize);
+		if (devMode) game.tracing = true;
 		game.generateMap();
 		
 		Player player = createUser();
@@ -31,8 +53,8 @@ public class MainForGame
 		System.out.println(startDesc.trim() + "\n");
 		// DEBUG TOOLS
 		// Game.debugConnections(game);
-		Game.printMap(game);
-		Game.printXY(game);
+		if (devMode) Game.printMap(game);
+		if (devMode) Game.printXY(game);
 		
 		/*
 		 * GAMEPLAY START
@@ -52,6 +74,7 @@ public class MainForGame
 				// Passes user input, as long as input != exit
 				instance.takeCommand(input, game, player);
 		}
+		System.out.println("Exiting...\n");
 		System.exit(0);
 	}
 	

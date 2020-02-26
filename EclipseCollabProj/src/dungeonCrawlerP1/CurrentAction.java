@@ -97,12 +97,16 @@ public class CurrentAction {
 					//list commands
 					System.out.println("Available Commands:\n"
 							+ "Help - List of Commands\n"
-							+ "Go - Travel North, East, South, or West\n"
+							+ "Go - Travel North, East, South, West, or back (if applicable)\n"
 							+ "Inventory - Check Inventory\n"
 							+ "Room - Description of current room\n"
 							+ "Check - Checks available paths\n"
 							+ "Take - Add a specified object to your inventory\n"
 							+ "Use - Use an item in your inventory\n");
+					break;
+				case "map":
+					// Open map (might remove later?)
+					Game.printMap(game);
 					break;
 				default:
 					System.out.println("Unknown Command, typing 'help' to see list of available commands\n");

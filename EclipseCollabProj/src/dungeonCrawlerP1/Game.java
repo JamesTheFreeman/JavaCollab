@@ -13,6 +13,7 @@ public class Game {
     private Random random;			// Random number
     String[] xy = new String[60];	// xy[i] = x, value at that address = y
    	int x = 0, y = 0;				// For tracking x/y of rooms
+   	boolean tracing = false;		// Enable/disable tracing for debugging
 
     /**
      * Default Constructor, creates medium room
@@ -86,23 +87,23 @@ public class Game {
 					// Random int 1-4 (or 0-3 + 1, technically)
 					direction = random.nextInt(4) + 1;
 				} while (direction == opp(pastDir));
-
-				System.out.println("Attempting to create room from " + x + " " + y);
+				
+				if (tracing) System.out.println("Attempting to create room from " + x + " " + y);
 				
     			// Tells whether direction is connected to room
     			if (roomArr[origin].avail(direction))
     			{
-    				System.out.println("Direction " + direction + " not connected");
+    				if (tracing) System.out.println("Direction " + direction + " not connected");
     				// Ensure no room exists at given x,y coordinate
     				if (!roomArr[origin].occupied(direction, this))
     				{
-    					System.out.println("No adjacent room");
+    					if (tracing) System.out.println("No adjacent room");
 	    				// Sets N-W value for room
 	    				roomArr[origin].setDir(direction, i);
 	    				// Sets opposite value for connected
 	    				roomArr[i].setDir(opp(direction), origin);
 	    				roomArr[i].setXY(direction, this, origin);
-	    				System.out.print("Room placed at ");
+	    				if (tracing) System.out.print("Room placed at ");
 	    				xyArr(i, direction, origin);
 	    				// Allows loop to be broken
 	    				placed = true;
@@ -116,7 +117,7 @@ public class Game {
     					{
     						if (xy[j] != null)
     						{
-    							System.out.println("xy[" + j + "] = " + xy[j] + ", checking for " + chk);
+    							if (tracing) System.out.println("xy[" + j + "] = " + xy[j] + ", checking for " + chk);
     							if (xy[j].equals(chk))
     							{
     								z = j;
@@ -357,7 +358,7 @@ public class Game {
     			break;
     	}
     	xy[z] = ax + " " + ay;
-    	System.out.println(xy[z] + "\n");
+    	if (tracing) System.out.println(xy[z] + "\n");
     }
     
     /**
