@@ -63,8 +63,8 @@ public class Game {
     		roomArr[i] = new RoomNode(i, random.nextInt(20) + 1, random.nextInt(20) + 1);
     	
     	// Sets room 1 as (0, 0)
-    	roomArr[1].x = x;
-    	roomArr[1].y = y;
+    	roomArr[1].x = 0;
+    	roomArr[1].y = 0;
 
     	int pastDir;		// To indicate previous direction traveled
     	boolean placed;		// Indicator of whether room has been successfully placed
@@ -78,7 +78,7 @@ public class Game {
     		x = 0;			// Resets x
     		y = 0;			// Resets y
     		placed = false;
-    		int placeAtt = 0;
+    		boolean placeAtt = false;
     		while (!placed)	// Ensures room placement
     		{
 				do // Ensures generateMap doesn't move backwards
@@ -101,16 +101,16 @@ public class Game {
 	    				roomArr[origin].setDir(direction, i);
 	    				// Sets opposite value for connected
 	    				roomArr[i].setDir(opp(direction), origin);
-	    				roomArr[i].setXY(direction, this);
+	    				roomArr[i].setXY(direction, this, origin);
 	    				System.out.print("Room placed at ");
-	    				xyArr(i, direction);
+	    				xyArr(i, direction, origin);
 	    				// Allows loop to be broken
 	    				placed = true;
     				}
     				// If room exists, connect to current origin
     				else
     				{
-    					String chk = dirCheck(direction, this);
+    					String chk = dirCheck(direction, this, origin);
     					int j, z = 99;
     					for (j = 1; j <= numOfRooms; j++)
     					{
@@ -131,18 +131,18 @@ public class Game {
     					}
     					roomArr[origin].setDir(direction, z);
     					roomArr[z].setDir(opp(direction), origin);
-    					placeAtt++;
+    					placeAtt = true;
     				}
     				
     				// If there are three unsuccessful attempts to create a room, relocate origin
-    				if (placeAtt == 3 && !placed)
+    				if (placeAtt && !placed)
     				{
     					// Resets origin
         				origin = 1;
         				pastDir = 0;
         				x = 0;
         				y = 0;
-        				placeAtt = 0;
+        				placeAtt = false;
     				}
     			}
 
@@ -185,7 +185,8 @@ public class Game {
     		case 0:
     			return 0;
     		default:
-    			return 0;
+    			System.out.println("Opp error");
+    			return 99;
     	}
     	// Shouldn't be possible, but Eclipse screams if this isn't here
     }
@@ -330,10 +331,16 @@ public class Game {
     	return min;
     }
     
-    public void xyArr(int z, int dir)
+    /**
+     * Stores the coordinates of newly created room in xy array
+     * @param z			roomID of new room
+     * @param dir		direction room was added
+     * @param orig		originating room
+     */
+    public void xyArr(int z, int dir, int orig)
     {
-    	int ax = roomArr[z].x;
-    	int ay = roomArr[z].y;
+    	int ax = roomArr[orig].x;
+    	int ay = roomArr[orig].y;
     	switch (dir)
     	{
     		case 1:
@@ -353,27 +360,33 @@ public class Game {
     	System.out.println(xy[z] + "\n");
     }
     
-    public String dirCheck(int d, Game g)
+    /**
+     * Returns x, y values to be checked against array for point in space
+     * @param d		Direction room is being added (N-W)
+     * @param g		Game containing rooms
+     * @return The x, y string for comparison
+     */
+    public String dirCheck(int d, Game g, int orig)
 	{
 		int xv = 0, yv = 0;
 		String ans;
 		switch(d)
 		{
 			case 1:
-				xv = x;
-				yv = y + 1;
+				xv = g.roomArr[orig].x;
+				yv = g.roomArr[orig].y + 1;
 				break;
 			case 2:
-				xv = x + 1;
-				yv = y;
+				xv = g.roomArr[orig].x + 1;
+				yv = g.roomArr[orig].y;
 				break;
 			case 3:
-				xv = x;
-				yv = y - 1;
+				xv = g.roomArr[orig].x;
+				yv = g.roomArr[orig].y - 1;
 				break;
 			case 4:
-				xv = x - 1;
-				yv = y;
+				xv = g.roomArr[orig].x - 1;
+				yv = g.roomArr[orig].y;
 				break;
 			default:
 				System.out.println("Err: dirCheck");
@@ -383,6 +396,10 @@ public class Game {
 		return ans;
 	}
     
+    /**
+     * Prints x & y values of all rooms
+     * @param g		Game contatining rooms
+     */
     public static void printXY(Game g)
     {
     	for (int i = 1; i <= g.numOfRooms; i++)

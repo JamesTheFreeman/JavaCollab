@@ -210,25 +210,25 @@ public class RoomNode
 		return false;
 	}
 	
-	public void setXY(int d, Game g)
+	public void setXY(int d, Game g, int orig)
 	{
 		switch(d)
 		{
 			case 1:
-				y = g.y + 1;
-				x = g.x;
+				y = g.roomArr[orig].y + 1;
+				x = g.roomArr[orig].x;
 				break;
 			case 2:
-				x = g.x + 1;
-				y = g.y;
+				x = g.roomArr[orig].x + 1;
+				y = g.roomArr[orig].y;
 				break;
 			case 3:
-				y = g.y - 1;
-				x = g.x;
+				y = g.roomArr[orig].y - 1;
+				x = g.roomArr[orig].x;
 				break;
 			case 4:
-				x = g.x - 1;
-				y = g.y;
+				x = g.roomArr[orig].x - 1;
+				y = g.roomArr[orig].y;
 				break;
 		}
 	}
