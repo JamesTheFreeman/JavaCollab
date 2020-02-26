@@ -175,20 +175,20 @@ public class RoomNode
 		switch(z)
 		{
 			case 1:
-				xv = x;
-				yv = y + 1;
+				xv = g.x;
+				yv = g.y + 1;
 				break;
 			case 2:
-				xv = x + 1;
-				yv = y;
+				xv = g.x + 1;
+				yv = g.y;
 				break;
 			case 3:
-				xv = x;
-				yv = y - 1;
+				xv = g.x;
+				yv = g.y - 1;
 				break;
 			case 4:
-				xv = x - 1;
-				yv = y;
+				xv = g.x - 1;
+				yv = g.y;
 				break;
 			default:
 				xv = 59;
@@ -201,7 +201,10 @@ public class RoomNode
 			if (g.xy[i] != null)
 			{
 				if (g.xy[i].equals(compare))
+				{
+					System.out.println(xv + " " + yv + " occupied");
 					return true;
+				}
 			}
 		}
 		return false;
@@ -213,15 +216,19 @@ public class RoomNode
 		{
 			case 1:
 				y = g.y + 1;
+				x = g.x;
 				break;
 			case 2:
 				x = g.x + 1;
+				y = g.y;
 				break;
 			case 3:
 				y = g.y - 1;
+				x = g.x;
 				break;
 			case 4:
 				x = g.x - 1;
+				y = g.y;
 				break;
 		}
 	}

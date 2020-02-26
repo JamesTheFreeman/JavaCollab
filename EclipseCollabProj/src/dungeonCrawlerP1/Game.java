@@ -87,40 +87,44 @@ public class Game {
 					direction = random.nextInt(4) + 1;
 				} while (direction == opp(pastDir));
 
+				System.out.println("Attempting to create room from " + x + " " + y);
+				
     			// Tells whether direction is connected to room
     			if (roomArr[origin].avail(direction))
     			{
-    				// System.out.println("Direction " + direction + " not connected");
+    				System.out.println("Direction " + direction + " not connected");
     				// Ensure no room exists at given x,y coordinate
     				if (!roomArr[origin].occupied(direction, this))
     				{
-    					// System.out.println("No adjacent room");
+    					System.out.println("No adjacent room");
 	    				// Sets N-W value for room
 	    				roomArr[origin].setDir(direction, i);
 	    				// Sets opposite value for connected
 	    				roomArr[i].setDir(opp(direction), origin);
 	    				roomArr[i].setXY(direction, this);
-	    				xyArr(i);
+	    				System.out.print("Room placed at ");
+	    				xyArr(i, direction);
 	    				// Allows loop to be broken
 	    				placed = true;
-	    				// System.out.print("Room placed at ");
     				}
     				// If room exists, connect to current origin
     				else
     				{
     					String chk = dirCheck(direction, this);
-    					int j, z = 0;
+    					int j, z = 99;
     					for (j = 1; j <= numOfRooms; j++)
     					{
     						if (xy[j] != null)
+    						{
     							System.out.println("xy[" + j + "] = " + xy[j] + ", checking for " + chk);
     							if (xy[j].equals(chk))
     							{
     								z = j;
     								break;
     							}
+    						}
     					}
-    					if (z == 0)
+    					if (z == 99)
     					{
     						System.out.println("Connection error");
     						System.exit(1);
@@ -326,40 +330,56 @@ public class Game {
     	return min;
     }
     
-    public void xyArr(int x)
+    public void xyArr(int z, int dir)
     {
-    	xy[x] = this.x + " " + this.y;
-    	
+    	int ax = roomArr[z].x;
+    	int ay = roomArr[z].y;
+    	switch (dir)
+    	{
+    		case 1:
+    			ay += 1;
+    			break;
+    		case 2:
+    			ax += 1;
+    			break;
+    		case 3:
+    			ay -= 1;
+    			break;
+    		case 4:
+    			ax -= 1;
+    			break;
+    	}
+    	xy[z] = ax + " " + ay;
+    	System.out.println(xy[z] + "\n");
     }
     
     public String dirCheck(int d, Game g)
 	{
-		int lx, ly;
+		int xv = 0, yv = 0;
 		String ans;
 		switch(d)
 		{
 			case 1:
-				ly = y + 1;
-				lx = x;
+				xv = x;
+				yv = y + 1;
 				break;
 			case 2:
-				lx = x + 1;
-				ly = y;
+				xv = x + 1;
+				yv = y;
 				break;
 			case 3:
-				ly = y - 1;
-				lx = x;
+				xv = x;
+				yv = y - 1;
 				break;
 			case 4:
-				lx = x - 1;
-				ly = x;
+				xv = x - 1;
+				yv = y;
 				break;
 			default:
-				lx = x;
-				ly = y;
-				break;
+				System.out.println("Err: dirCheck");
+				System.exit(1);
 		}
-		ans = lx + " " + ly;
+		ans = xv + " " + yv;
 		return ans;
 	}
     
