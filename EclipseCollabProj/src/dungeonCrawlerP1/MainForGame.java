@@ -53,9 +53,12 @@ public class MainForGame
 		String startDesc = game.roomArr[1].checkType();
 		System.out.println(startDesc.trim() + "\n");
 		// DEBUG TOOLS
-		if (devMode) Game.debugConnections(game);
-		if (devMode) Game.printMap(game, player);
-		if (devMode) Game.printXY(game);
+		if (devMode)
+		{
+			Game.debugConnections(game);
+			Game.printMap(game, player);
+			Game.printXY(game);
+		}
 		
 		/*
 		 * GAMEPLAY START
