@@ -15,12 +15,35 @@ public class MainForGame
 	public static void main(String[] args)
 	{
 		/*
+		 * GAME START SCREEN
+		 * Mostly for dev mode for tracing
+		 */
+		
+		boolean devMode = false;
+		System.out.println("====================");
+		System.out.println("Welcome! Start game?");
+		System.out.println("====================\n");
+		System.out.print("> ");
+		String startAns = kbd.nextLine();
+		startAns.toLowerCase();
+		System.out.println("\n");
+		if (startAns.equals("yes") || startAns.equals("y"));
+		// Dev mode to enable/disable tracing
+		else if (startAns.equals("dev")) devMode = true;
+		else
+		{
+			System.out.println("Exiting...\n");
+			System.exit(0);
+		}
+		
+		/*
 		 * GAME INITIALIZATION
 		 * Initial map build + player creation
 		 */
 		
 		int mapSize = pickSize();
 		Game game = new Game(mapSize);
+		if (devMode) game.tracing = true;
 		game.generateMap();
 		
 		Player player = createUser();
@@ -29,7 +52,10 @@ public class MainForGame
 		// Gives initial description, no check on RNG at beginning
 		String startDesc = game.roomArr[1].checkType();
 		System.out.println(startDesc.trim() + "\n");
-		// Game.debugConnections(game); DEBUG TOOL
+		// DEBUG TOOLS
+		// Game.debugConnections(game);
+		if (devMode) Game.printMap(game, player);
+		if (devMode) Game.printXY(game);
 		
 		/*
 		 * GAMEPLAY START
@@ -49,6 +75,7 @@ public class MainForGame
 				// Passes user input, as long as input != exit
 				instance.takeCommand(input, game, player);
 		}
+		System.out.println("Exiting...\n");
 		System.exit(0);
 	}
 	
@@ -80,6 +107,7 @@ public class MainForGame
 		String size = kbd.nextLine();
 		System.out.println();
 		size = size.toLowerCase();
+		size = easySize(size);
 		if (size.equals("small") || size.equals("medium") || size.equals("large"))
 		{
 			switch(size)
@@ -95,5 +123,28 @@ public class MainForGame
 			pickSize();
 		}
 		return 0;
+	}
+	/**
+	 * Allows user to use s/m/l in place of full word because I got tired of typing
+	 * out the whole thing while testing
+	 * @param s			User input being used to set map size
+	 * @return String containing either the original input or a full word form s/m/l
+	 */
+	public static String easySize(String s)
+	{
+		String ans = s;
+		switch(s)
+		{
+			case "s":
+				ans = "small";
+				break;
+			case "m":
+				ans = "medium";
+				break;
+			case "l":
+				ans = "large";
+				break;
+		}
+		return ans;
 	}
 }
