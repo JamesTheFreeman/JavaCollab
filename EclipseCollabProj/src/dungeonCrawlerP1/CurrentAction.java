@@ -54,7 +54,7 @@ public class CurrentAction {
 					} else {System.out.println("Nowhere to go back to\n");}
 					break;
 				default:
-					System.out.println("Unknown Command, typing 'help' to see list of available commands\n");
+					System.out.println("Unknown command, type 'help' to see a list of available commands\n");
 					break;
 			}
 		}
@@ -110,7 +110,7 @@ public class CurrentAction {
 					Game.printMap(game, player);
 					break;
 				default:
-					System.out.println("Unknown Command, typing 'help' to see list of available commands\n");
+					System.out.println("Unknown command, type 'help' to see a list of available commands\n");
 					break;
 			}
 		}

@@ -107,6 +107,7 @@ public class MainForGame
 		String size = kbd.nextLine();
 		System.out.println();
 		size = size.toLowerCase();
+		size = easySize(size);
 		if (size.equals("small") || size.equals("medium") || size.equals("large"))
 		{
 			switch(size)
@@ -122,5 +123,28 @@ public class MainForGame
 			pickSize();
 		}
 		return 0;
+	}
+	/**
+	 * Allows user to use s/m/l in place of full word because I got tired of typing
+	 * out the whole thing while testing
+	 * @param s			User input being used to set map size
+	 * @return String containing either the original input or a full word form s/m/l
+	 */
+	public static String easySize(String s)
+	{
+		String ans = s;
+		switch(s)
+		{
+			case "s":
+				ans = "small";
+				break;
+			case "m":
+				ans = "medium";
+				break;
+			case "l":
+				ans = "large";
+				break;
+		}
+		return ans;
 	}
 }
