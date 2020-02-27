@@ -20,7 +20,7 @@ public class MainForGame
 		 */
 		
 		boolean devMode = false;
-		System.out.println("====================");
+		System.out.println("\n====================");
 		System.out.println("Welcome! Start game?");
 		System.out.println("====================\n");
 		System.out.print("> ");
