@@ -120,15 +120,15 @@ public class Player
 	 * Method for moving the player from one room to another
 	 * @param roomNum		ID of room being traveled to
 	 */
-	public void traverseRoom(int roomNum, Game game)
+	public void traverseRoom(int roomNum, Game game, RNGObj rng)
 	{
 		cameFrom = local;
 		local = roomNum;
-		// For the future, putting here so we don't forget
+		
+		// RNG is passed from main, to current action, to player... might be an issue later?
+		rng.runStandardRNG(game, this);
+		
 		System.out.println(game.roomArr[roomNum].checkType().trim() + "\n");
-		/*
-		roomArr[roomNum].checkRNG();
-		*/
 	}
 	/**
 	 * Relies on object of class NPChar, maybe not necessary but it can't hurt

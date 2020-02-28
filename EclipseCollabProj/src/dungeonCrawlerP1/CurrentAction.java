@@ -7,7 +7,7 @@ package dungeonCrawlerP1;
 
 public class CurrentAction {
 	
-	public void takeCommand(String input, Game game, Player player) {
+	public void takeCommand(String input, Game game, Player player, RNGObj rng) {
 		
 		/**
 		 * Array index 0 = Command Word
@@ -23,34 +23,34 @@ public class CurrentAction {
 				case "north":
 					//Traverse North
 				 	if (game.roomArr[player.local].N != 0) {
-						player.traverseRoom(game.roomArr[player.local].N, game);
+						player.traverseRoom(game.roomArr[player.local].N, game, rng);
 					} else {System.out.println("You cannot go that way\n");}
 					break;
 				case "s":
 				case "south":
 					//Traverse South
 			 		if (game.roomArr[player.local].S != 0) {
-						player.traverseRoom(game.roomArr[player.local].S, game);
+						player.traverseRoom(game.roomArr[player.local].S, game, rng);
 					} else {System.out.println("You cannot go that way\n");}
 					break;
 				case "e":
 				case "east":
 					//Traverse East
 					if (game.roomArr[player.local].E != 0) {
-						player.traverseRoom(game.roomArr[player.local].E, game);
+						player.traverseRoom(game.roomArr[player.local].E, game, rng);
 					} else {System.out.println("You cannot go that way\n");}
 					break;
 				case "w":
 				case "west":
 					//Traverse West
 					if (game.roomArr[player.local].W != 0) {
-						player.traverseRoom(game.roomArr[player.local].W, game);
+						player.traverseRoom(game.roomArr[player.local].W, game, rng);
 					} else {System.out.println("You cannot go that way\n");}
 					break;
 				case "back":
 					//Traverse Back
 					if (player.cameFrom > 0) {
-						player.traverseRoom(player.cameFrom, game);
+						player.traverseRoom(player.cameFrom, game, rng);
 					} else {System.out.println("Nowhere to go back to\n");}
 					break;
 				default:

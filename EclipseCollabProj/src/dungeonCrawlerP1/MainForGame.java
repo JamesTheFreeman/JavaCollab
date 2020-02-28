@@ -49,6 +49,8 @@ public class MainForGame
 		Player player = createUser();
 		System.out.println("Welcome, " + player.Name + "\n");
 		
+		RNGObj rng = new RNGObj(); // Initializes RNG
+		
 		// Gives initial description, no check on RNG at beginning
 		String startDesc = game.roomArr[1].checkType();
 		System.out.println(startDesc.trim() + "\n");
@@ -76,7 +78,7 @@ public class MainForGame
 			System.out.println("");
 			if (!input.equals("exit"))
 				// Passes user input, as long as input != exit
-				instance.takeCommand(input, game, player);
+				instance.takeCommand(input, game, player, rng);
 		}
 		System.out.println("Exiting...\n");
 		System.exit(0);
