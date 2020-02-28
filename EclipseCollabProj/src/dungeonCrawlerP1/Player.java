@@ -124,6 +124,8 @@ public class Player
 	{
 		cameFrom = local;
 		local = roomNum;
+		// Room will be clear eventually now that the player is in it, can't hurt to clear now
+		game.roomArr[roomNum].clear = true;
 		
 		// RNG is passed from main, to current action, to player... might be an issue later?
 		rng.runStandardRNG(game, this);
