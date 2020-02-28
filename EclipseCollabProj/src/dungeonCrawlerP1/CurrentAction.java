@@ -16,46 +16,50 @@ public class CurrentAction {
 		String[] inputs = input.toLowerCase().split(" ");
 		
 		// Special case for if player wishes to travel
-		if (inputs[0].equals("go"))
-		{
-			switch(inputs[1]) {
-				case "n":
-				case "north":
-					//Traverse North
-				 	if (game.roomArr[player.local].N != 0) {
-						player.traverseRoom(game.roomArr[player.local].N, game, rng);
-					} else {System.out.println("You cannot go that way\n");}
-					break;
-				case "s":
-				case "south":
-					//Traverse South
-			 		if (game.roomArr[player.local].S != 0) {
-						player.traverseRoom(game.roomArr[player.local].S, game, rng);
-					} else {System.out.println("You cannot go that way\n");}
-					break;
-				case "e":
-				case "east":
-					//Traverse East
-					if (game.roomArr[player.local].E != 0) {
-						player.traverseRoom(game.roomArr[player.local].E, game, rng);
-					} else {System.out.println("You cannot go that way\n");}
-					break;
-				case "w":
-				case "west":
-					//Traverse West
-					if (game.roomArr[player.local].W != 0) {
-						player.traverseRoom(game.roomArr[player.local].W, game, rng);
-					} else {System.out.println("You cannot go that way\n");}
-					break;
-				case "back":
-					//Traverse Back
-					if (player.cameFrom > 0) {
-						player.traverseRoom(player.cameFrom, game, rng);
-					} else {System.out.println("Nowhere to go back to\n");}
-					break;
-				default:
-					System.out.println("Unknown command, type 'help' to see a list of available commands\n");
-					break;
+		if (inputs[0].equals("go")) {
+			try {
+				switch(inputs[1]) {
+					case "n":
+					case "north":
+						//Traverse North
+					 	if (game.roomArr[player.local].N != 0) {
+							player.traverseRoom(game.roomArr[player.local].N, game, rng);
+						} else {System.out.println("You cannot go that way.\n");}
+						break;
+					case "s":
+					case "south":
+						//Traverse South
+				 		if (game.roomArr[player.local].S != 0) {
+							player.traverseRoom(game.roomArr[player.local].S, game, rng);
+						} else {System.out.println("You cannot go that way.\n");}
+						break;
+					case "e":
+					case "east":
+						//Traverse East
+						if (game.roomArr[player.local].E != 0) {
+							player.traverseRoom(game.roomArr[player.local].E, game, rng);
+						} else {System.out.println("You cannot go that way.\n");}
+						break;
+					case "w":
+					case "west":
+						//Traverse West
+						if (game.roomArr[player.local].W != 0) {
+							player.traverseRoom(game.roomArr[player.local].W, game, rng);
+						} else {System.out.println("You cannot go that way.\n");}
+						break;
+					case "back":
+						//Traverse Back
+						if (player.cameFrom > 0) {
+							player.traverseRoom(player.cameFrom, game, rng);
+						} else {System.out.println("There's nowhere to go back to.\n");}
+						break;
+					default:
+						System.out.println("Unknown command, type 'help' to see a list of available commands.\n");
+						break;
+				}
+			}
+			catch(ArrayIndexOutOfBoundsException e) {
+				System.out.println("You have to type where you want to go to go somewhere.\n");
 			}
 		}
 		// Case if player doesn't wish to travel
@@ -96,12 +100,13 @@ public class CurrentAction {
 				case "help":
 					//list commands
 					System.out.println("Available Commands:\n"
-							+ "Help - List of Commands\n"
+							+ "============\n"
 							+ "Go - Travel North, East, South, West, or back (if applicable)\n"
 							+ "Map - Check your location on the map\n"
 							+ "Inventory - Check Inventory\n"
 							+ "Room - Description of current room\n"
 							+ "Check - Checks available paths\n"
+							+ "Look - Take another look at your surroundings\n"
 							+ "Take - Add a specified object to your inventory\n"
 							+ "Use - Use an item in your inventory\n");
 					break;
@@ -109,8 +114,12 @@ public class CurrentAction {
 					// Open map (might remove later?)
 					Game.printMap(game, player);
 					break;
+				case "look":
+					// Reprints room description
+					System.out.println(game.roomArr[player.local].checkType().trim() + "\n");
+					break;
 				default:
-					System.out.println("Unknown command, type 'help' to see a list of available commands\n");
+					System.out.println("Unknown command, type 'help' to see a list of available commands.\n");
 					break;
 			}
 		}
