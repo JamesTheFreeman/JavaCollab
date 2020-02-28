@@ -63,8 +63,7 @@ public class CurrentAction {
 			}
 		}
 		// Case if player doesn't wish to travel
-		else
-		{
+		else {
 			switch(inputs[0]) {
 				case "inventory":
 					//Check Inventory
