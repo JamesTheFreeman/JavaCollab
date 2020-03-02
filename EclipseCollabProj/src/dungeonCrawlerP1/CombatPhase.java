@@ -33,6 +33,7 @@ public class CombatPhase
 		{
 			// Use to construct objects of type Enemy
 			// Stats can be pulled from txt (a la roomtypes.txt)
+			// along with any physical description(s) of that enemy
 		}
 		
 		pInput.toLowerCase();
