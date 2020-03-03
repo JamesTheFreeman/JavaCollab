@@ -131,7 +131,7 @@ public class Enemy
 	}
 	
 	/**
-	 * Prints enemy HP bar, 
+	 * Prints enemy HP bar, reducing values to reduce bar size if needed
 	 */
 	public void displayHealthBar()
 	{
@@ -165,5 +165,14 @@ public class Enemy
 	{
 		Random roll = new Random();
 		return roll.nextInt(attack) + 1;
+	}
+	
+	/**
+	 * Serves as method for dealing damage to enemy, subtracting int from HP
+	 * @param dmg Int to be subtracted from HP
+	 */
+	public void takeDamage(int dmg)
+	{
+		HP -= dmg;
 	}
 }
