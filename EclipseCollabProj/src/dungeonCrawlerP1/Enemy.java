@@ -8,6 +8,7 @@ package dungeonCrawlerP1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Enemy
@@ -15,7 +16,6 @@ public class Enemy
 	private String Name = "n";	// Enemy/type name
 	private String desc;		// Enemy/type description
 	private int HP, maxHP;		// HP/max of given enemy
-	private int type;			// Enemy type ID (for txt)
 	private int attack = -1;	// Max attack value
 	
 	/**
@@ -23,9 +23,7 @@ public class Enemy
 	 * @param x		Enemy type ID to be used
 	 */
 	public Enemy(int x)
-	{
-		type = x; // Enemy type ID
-		
+	{	
 		Scanner stat = null;
 		Scanner name = null;
 		// Try/catch to handle possible error(s)
@@ -122,5 +120,50 @@ public class Enemy
 	public String getName()
 	{
 		return Name;
+	}
+	
+	/**
+	 * Displays current health of enemy
+	 */
+	public void displayHealthNum()
+	{
+		System.out.print(HP + "/" + maxHP);
+	}
+	
+	/**
+	 * Prints enemy HP bar, 
+	 */
+	public void displayHealthBar()
+	{
+		int reducedMax = maxHP;
+		int reducedHP = HP;
+		String reduced = "";
+		if (maxHP > 50)
+		{
+			reducedMax /= 2;
+			reducedHP /= 2;
+			reduced = " x2"; // Indicates health bar has been reduced
+		}
+		String HPBar = "[";
+		for (int i = 1; i <= reducedMax; i++)
+		{
+			if (i <= reducedHP)
+				HPBar += "o";
+			else
+				HPBar += " ";
+		}
+		HPBar += "]";
+		
+		System.out.print(HPBar + reduced);
+	}
+	
+	/**
+	 * Serves as enemy attack, pulling random damage number <= their max attack
+	 * @return Value of (this) attack roll
+	 */
+	public int attackP()
+	{
+		Random roll = new Random();
+		return roll.nextInt(attack) + 1;
 	}
 }
