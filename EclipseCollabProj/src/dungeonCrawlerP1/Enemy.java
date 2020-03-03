@@ -24,11 +24,11 @@ public class Enemy
 	 */
 	public Enemy(int x)
 	{
-		type = x;
+		type = x; // Enemy type ID
 		
 		Scanner stat = null;
 		Scanner name = null;
-		// Try/catch to handle possible error
+		// Try/catch to handle possible error(s)
 		try
 		{
 			stat = new Scanner(new File("enemystats.txt"));
@@ -40,13 +40,13 @@ public class Enemy
 			System.exit(1);
 		}
 		
-		String y;
+		String y; // For holding scanner values
 		
-		// Gets enemy stats
+		// Gets enemy stats from "enemystats.txt"
 		while (stat.hasNext())
 		{
 			y = stat.next();
-			if (Integer.parseInt(y) == type)
+			if (Integer.parseInt(y) == x)
 			{
 				HP = stat.nextInt();
 				maxHP = HP;
@@ -60,12 +60,13 @@ public class Enemy
 			}
 			y = stat.nextLine();
 		}
+		stat.close();
 		
-		// Gets enemy name/desc
+		// Gets enemy name/desc from "enemydesc.txt"
 		while (name.hasNext())
 		{
 			y = name.next();
-			if (Integer.parseInt(y) == type)
+			if (Integer.parseInt(y) == x)
 			{
 				Name = name.nextLine().trim();
 				desc = name.nextLine().trim();
@@ -76,9 +77,11 @@ public class Enemy
 				System.out.println(name.nextLine().trim());
 				System.exit(1);
 			}
+			// Skips rest of current line & next line
 			y = name.nextLine();
 			y = name.nextLine();
 		}
+		name.close();
 		
 		// Recognizes that the enemy hasn't been built correctly if these values aren't replaced
 		if (attack == -1 || Name.equals("n"))
@@ -100,8 +103,6 @@ public class Enemy
 				System.exit(1);
 			}
 		}
-		stat.close();
-		name.close();
 	}
 	
 	// METHODS
