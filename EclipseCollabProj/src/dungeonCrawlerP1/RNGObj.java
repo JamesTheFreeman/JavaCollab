@@ -54,6 +54,6 @@ public class RNGObj
 	public void ambush(Game g, Player p)
 	{
 		// Add once there's combat
-		System.out.println("\nYou would've just been ambushed, if that was in the game.");
+		System.out.println("You would've just been ambushed, if that was in the game.");
 	}
 }

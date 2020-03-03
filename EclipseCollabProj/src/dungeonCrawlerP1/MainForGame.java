@@ -69,7 +69,9 @@ public class MainForGame
 		
 		CurrentAction instance = new CurrentAction();
 		String input = "";
-		// (Temporary) loop to allow for multiple commands
+		
+		System.out.print("\n\n\n");
+		// Loop to allow for multiple commands
 		while (!input.equals("exit"))
 		{
 			System.out.print("> ");
@@ -79,6 +81,7 @@ public class MainForGame
 			if (!input.equals("exit"))
 				// Passes user input, as long as input != exit
 				instance.takeCommand(input, game, player, rng);
+			System.out.print("\n\n\n");
 		}
 		System.out.println("Exiting...\n");
 		System.exit(0);
