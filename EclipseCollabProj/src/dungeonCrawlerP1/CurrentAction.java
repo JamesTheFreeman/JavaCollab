@@ -69,12 +69,6 @@ public class CurrentAction {
 					//Check Inventory
 					player.checkInv();
 					break;
-				case "room":
-					//Describe room
-					String desc = "";
-					desc = game.roomArr[player.local].checkType();
-					System.out.println(desc.trim() + "\n");
-					break;
 				case "take":
 					//add item to inventory
 					/*
@@ -96,19 +90,6 @@ public class CurrentAction {
 					// Really gross method call
 					game.roomArr[player.local].availablePaths(player);
 					break;
-				case "help":
-					//list commands
-					System.out.println("Available Commands:\n"
-							+ "============\n"
-							+ "Go - Travel North, East, South, West, or back (if applicable)\n"
-							+ "Map - Check your location on the map\n"
-							+ "Inventory - Check Inventory\n"
-							+ "Room - Description of current room\n"
-							+ "Check - Checks available paths\n"
-							+ "Look - Take another look at your surroundings\n"
-							+ "Take - Add a specified object to your inventory\n"
-							+ "Use - Use an item in your inventory\n");
-					break;
 				case "map":
 					// Open map (might remove later?)
 					Game.printMap(game, player);
@@ -116,6 +97,18 @@ public class CurrentAction {
 				case "look":
 					// Reprints room description
 					System.out.println(game.roomArr[player.local].checkType().trim() + "\n");
+					break;
+				case "help":
+					//list commands
+					System.out.println("Available Commands:\n"
+							+ "============\n"
+							+ "Go - Travel North, East, South, West, or back (if applicable)\n"
+							+ "Map - Check your location on the map\n"
+							+ "Inventory - Check Inventory\n"
+							+ "Check - Checks available paths\n"
+							+ "Look - Take another look at your surroundings\n"
+							+ "Take - Add a specified object to your inventory\n"
+							+ "Use - Use an item in your inventory\n");
 					break;
 				default:
 					System.out.println("Unknown command, type 'help' to see a list of available commands.\n");
