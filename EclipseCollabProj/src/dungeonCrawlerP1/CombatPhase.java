@@ -6,6 +6,7 @@
 
 package dungeonCrawlerP1;
 
+import java.util.*;
 import java.util.Random;
 
 public class CombatPhase
@@ -68,7 +69,7 @@ public class CombatPhase
 	 * @param g			Current game
 	 * @param p			Player in combat
 	 */
-	public void initializeFight(String pInput, Game g, Player p)
+	public void initializeFight(Scanner kbd, Game g, Player p)
 	{
 		Random enemyRand = new Random();
 		int enemyType, count = 0;
@@ -99,11 +100,20 @@ public class CombatPhase
 		}
 		if (tracing) System.out.println(count + " enemies generated");
 		
-		pInput.toLowerCase();
-		switch(pInput)
-		{
-			// Reacts to player input, should probably include input
-			// menu at all times
+		boolean combat = true;	// Boolean for maintaining combat loop
+		String pInput;			// Player input
+		
+		// Combat loop w/in CombatPhase to maintain local variables (enemies) / keep main clean
+		while (combat)
+		{	
+			pInput = kbd.nextLine();
+			pInput.toLowerCase();
+			
+			switch(pInput)
+			{
+				// Reacts to player input, should probably include
+				// input menu at all times
+			}
 		}
 	}
 }
