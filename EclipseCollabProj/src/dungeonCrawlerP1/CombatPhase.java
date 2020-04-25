@@ -11,8 +11,9 @@ import java.util.Random;
 
 public class CombatPhase
 {
-	private int enemyDiff;	// Difficulty of enemy encounter
-	private int enemyNum;	// Number of enemies (Max of 5)
+	private int enemyDiff;			// Difficulty of enemy encounter
+	private int enemyNum;			// Number of enemies
+	private int maxEnemies = 10;	// Max number of enemies in normal encounter
 	
 	private boolean tracing = false;
 	
@@ -26,7 +27,7 @@ public class CombatPhase
 	{
 		enemyDiff = range;
 		enemyNum = num;
-		if (num > 5) enemyNum = 5;
+		if (num > maxEnemies) enemyNum = maxEnemies;
 	}
 	/**
 	 * One parameter constructor, sets enemy difficulty & defaults num to 1
@@ -44,8 +45,8 @@ public class CombatPhase
 	{
 		enemyDiff = range;
 		enemyNum = num;
-		if (num > 5) enemyNum = 5;
-		tracing = true;
+		if (num > maxEnemies) enemyNum = maxEnemies;
+		tracing = trce;
 		
 		System.out.println("Tracing for combat enabled");
 	}
@@ -56,7 +57,7 @@ public class CombatPhase
 	{
 		enemyDiff = range;
 		enemyNum = 1;
-		tracing = true;
+		tracing = trce;
 		
 		System.out.println("Tracing for combat enabled");
 	}
@@ -72,32 +73,26 @@ public class CombatPhase
 	public void initializeFight(Scanner kbd, Game g, Player p)
 	{
 		Random enemyRand = new Random();
+		
+		// Creates array for enemies
+		Enemy enemyArr[] = new Enemy[maxEnemies + 1];
+		// First cell isn't used (no enemy 0)
+		enemyArr[1] = null;
+		
 		int enemyType, count = 0;
 		
 		// Creates new enemies (as applicable)
-		switch (enemyNum)
+		for (int i = 1; i <= enemyNum; i++)
 		{
-			case 5:
-				enemyType = enemyRand.nextInt(enemyDiff) + 1;
-				Enemy enemy5 = new Enemy(enemyType);
-				count++;
-			case 4:
-				enemyType = enemyRand.nextInt(enemyDiff) + 1;
-				Enemy enemy4 = new Enemy(enemyType);
-				count++;
-			case 3:
-				enemyType = enemyRand.nextInt(enemyDiff) + 1;
-				Enemy enemy3 = new Enemy(enemyType);
-				count++;
-			case 2:
-				enemyType = enemyRand.nextInt(enemyDiff) + 1;
-				Enemy enemy2 = new Enemy(enemyType);
-				count++;
-			case 1:
-				enemyType = enemyRand.nextInt(enemyDiff) + 1;
-				Enemy enemy1 = new Enemy(enemyType);
-				count++;
+			enemyType = enemyRand.nextInt(enemyDiff) + 1;
+			enemyArr[i] = new Enemy(enemyType);
 		}
+		// Makes remaining cells null
+		for (int i = enemyNum + 1; i <= maxEnemies; i++)
+		{
+			enemyArr[i] = null;
+		}
+		
 		if (tracing) System.out.println(count + " enemies generated");
 		
 		boolean combat = true;	// Boolean for maintaining combat loop
