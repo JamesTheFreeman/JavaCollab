@@ -16,7 +16,7 @@ public class CurrentAction {
 		String[] inputs = input.toLowerCase().split(" ");
 		
 		// Special case for if player wishes to travel
-		if (inputs[0].equals("go")) {
+		if (inputs[0].equals("go") && inputs.length > 1) {
 			try {
 				switch(inputs[1]) {
 					case "n":
