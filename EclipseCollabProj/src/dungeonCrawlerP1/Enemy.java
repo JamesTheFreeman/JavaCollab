@@ -17,6 +17,8 @@ public class Enemy
 	private String desc;		// Enemy/type description
 	private int HP, maxHP;		// HP/max of given enemy
 	private int attack = -1;	// Max attack value
+
+	String workingDir = System.getProperty("user.dir") + "\\"; // Working directory for filepaths
 	
 	/**
 	 * Default constructor, makes enemy based on provided ID
@@ -29,8 +31,8 @@ public class Enemy
 		// Try/catch to handle possible error(s)
 		try
 		{
-			stat = new Scanner(new File("enemystats.txt"));
-			name = new Scanner(new File("enemydesc.txt"));
+			stat = new Scanner(new File(workingDir + "enemystats.txt"));
+			name = new Scanner(new File(workingDir + "enemydesc.txt"));
 		}
 		catch(FileNotFoundException e)
 		{

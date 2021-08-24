@@ -15,6 +15,8 @@ public class RoomNode
 	int importantThing;	// Determines description/type of important thing located in room
 	int N, E, S, W;		// Contain the room # of the room connected at this point of the current room
 	int x, y;			// The x & y coordinates of the given room
+
+	String workingDir = System.getProperty("user.dir") + "\\"; // Working directory for filepaths
 	
 	/**
 	 * Constructor for generation of map: sets N-W as 0 so the room connecting a given room
@@ -49,7 +51,8 @@ public class RoomNode
 		// Try/catch to handle possible error
 		try
 		{
-			reader = new Scanner(new File("roomtypes.txt"));
+			System.out.println(workingDir);
+			reader = new Scanner(new File(workingDir + "roomtypes.txt"));
 		}
 		catch(FileNotFoundException e)
 		{
@@ -82,7 +85,7 @@ public class RoomNode
 		// Try/catch to handle possible error
 		try
 		{
-			reader = new Scanner(new File("importantthings.txt"));
+			reader = new Scanner(new File(workingDir + "importantthings.txt"));
 		}
 		catch(FileNotFoundException e)
 		{
