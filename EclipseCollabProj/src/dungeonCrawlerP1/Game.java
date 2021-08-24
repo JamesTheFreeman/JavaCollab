@@ -227,8 +227,12 @@ public class Game {
     {
     	for (int i = 1; i <= g.numOfRooms; i++)
     	{
-    		System.out.println("ID: " + g.roomArr[i].ID + " | N: " + g.roomArr[i].N + " E: " + g.roomArr[i].E
-    				+ " S: " + g.roomArr[i].S + " W: " + g.roomArr[i].W);
+    		if (i < 10)
+	    		System.out.println("ID: " + g.roomArr[i].ID + "  | N: " + g.roomArr[i].N + " E: " + g.roomArr[i].E
+	    				+ " S: " + g.roomArr[i].S + " W: " + g.roomArr[i].W);
+    		else
+    			System.out.println("ID: " + g.roomArr[i].ID + " | N: " + g.roomArr[i].N + " E: " + g.roomArr[i].E
+        				+ " S: " + g.roomArr[i].S + " W: " + g.roomArr[i].W);
     	}
     	System.out.println(); // For neatness
     }

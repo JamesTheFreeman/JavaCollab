@@ -20,7 +20,7 @@ public class MainForGame
 		 */
 		
 		boolean devMode = false;
-		System.out.println("====================");
+		System.out.println("\n====================");
 		System.out.println("Welcome! Start game?");
 		System.out.println("====================\n");
 		System.out.print("> ");
@@ -49,13 +49,18 @@ public class MainForGame
 		Player player = createUser();
 		System.out.println("Welcome, " + player.Name + "\n");
 		
+		RNGObj rng = new RNGObj(); // Initializes RNG
+		
 		// Gives initial description, no check on RNG at beginning
 		String startDesc = game.roomArr[1].checkType();
 		System.out.println(startDesc.trim() + "\n");
 		// DEBUG TOOLS
-		// Game.debugConnections(game);
-		if (devMode) Game.printMap(game, player);
-		if (devMode) Game.printXY(game);
+		if (devMode)
+		{
+			Game.debugConnections(game);
+			Game.printMap(game, player);
+			Game.printXY(game);
+		}
 		
 		/*
 		 * GAMEPLAY START
@@ -64,7 +69,9 @@ public class MainForGame
 		
 		CurrentAction instance = new CurrentAction();
 		String input = "";
-		// (Temporary) loop to allow for multiple commands
+		
+		System.out.print("\n\n\n");
+		// Loop to allow for multiple commands
 		while (!input.equals("exit"))
 		{
 			System.out.print("> ");
@@ -73,7 +80,8 @@ public class MainForGame
 			System.out.println("");
 			if (!input.equals("exit"))
 				// Passes user input, as long as input != exit
-				instance.takeCommand(input, game, player);
+				instance.takeCommand(input, game, player, rng);
+			System.out.print("\n\n\n");
 		}
 		System.out.println("Exiting...\n");
 		System.exit(0);
