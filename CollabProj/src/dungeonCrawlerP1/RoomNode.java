@@ -51,7 +51,6 @@ public class RoomNode
 		// Try/catch to handle possible error
 		try
 		{
-			System.out.println(workingDir);
 			reader = new Scanner(new File(workingDir + "roomtypes.txt"));
 		}
 		catch(FileNotFoundException e)
